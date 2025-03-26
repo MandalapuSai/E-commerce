@@ -1,0 +1,275 @@
+/* Header Styling */
+.header {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1050;
+}
+
+.header .navbar-brand img {
+  width: 130px;
+}
+
+.header .nav-link {
+  color: white !important;
+  font-size: 18px;
+  font-weight: 500;
+  margin: 0 5px;
+}
+
+.header .nav-link:hover {
+  color: #ffcc00 !important;
+}
+
+.header-icon {
+  color: white !important;
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.header-icon:hover {
+  color: #ffcc00 !important;
+}
+
+/* Search Popup */
+.search-popup {
+  position: fixed;
+  top: 15%;
+  right: 1%;  /* Moved to left side */
+  width: 35%;
+  background: white;
+  padding: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Search Input */
+.search-popup input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  outline: none;
+}
+
+/* Close Button */
+.search-popup .search-close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: black;
+}
+
+.search-popup .search-close-btn:hover {
+  color: #ffcc00;
+}
+
+/*Search Results */
+.search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  min-height: auto;
+  max-height: 450px;
+  overflow-y: auto;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+/*  Individual Result Item */
+.result-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.result-item:hover {
+  background: #f8f8f8;
+  cursor: pointer;
+}
+
+/*  Product Image */
+.result-image {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 5px;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+}
+
+.no-results {
+  text-align: center;
+  font-size: 16px;
+  color: #888;
+  padding: 10px;
+}
+
+
+.custom-dropdown-item:hover {
+  background-color: #0BA350 !important; 
+  color: white !important;
+}
+
+/* Dropdown Hover */
+#products-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+
+@media (max-width: 992px) {
+  .header .nav-link {
+    font-size: 15px;
+  }
+
+  .header-icon {
+    font-size: 17px;
+  }
+
+  .search-popup {
+    width: 50%;
+    right: 5%;
+  }
+
+  .result-image {
+    width: 80px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 8px 0;
+  }
+
+  .header .navbar-brand img {
+    width: 110px;
+  }
+
+  .header .nav-link {
+    font-size: 14px;
+    margin: 0 3px;
+  }
+
+  .header-icon {
+    font-size: 16px;
+  }
+
+  .search-popup {
+    width: 60%;
+    right: 5%;
+    padding: 10px;
+  }
+
+  .search-popup input {
+    font-size: 14px;
+    padding: 8px;
+  }
+
+  .search-popup .search-close-btn {
+    font-size: 18px;
+  }
+
+  .search-results {
+    max-height: 300px;
+  }
+
+  .result-item {
+    padding: 8px;
+  }
+
+  .result-image {
+    width: 70px;
+    height: 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .header .navbar-brand img {
+    width: 100px;
+  }
+
+  .header .nav-link {
+    font-size: 13px;
+  }
+
+  .header-icon {
+    font-size: 15px;
+  }
+
+  .search-popup {
+    width: 80%;
+    right: 10%;
+    padding: 8px;
+  }
+
+  .search-popup input {
+    font-size: 13px;
+    padding: 6px;
+  }
+
+  .search-popup .search-close-btn {
+    font-size: 16px;
+  }
+
+  .search-results {
+    max-height: 250px;
+  }
+
+  .result-item {
+    padding: 6px;
+  }
+
+  .result-image {
+    width: 60px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header .navbar-brand img {
+    width: 90px;
+  }
+
+  .header .nav-link {
+    font-size: 12px;
+  }
+
+  .header-icon {
+    font-size: 14px;
+  }
+
+  .search-popup {
+    width: 90%;
+    right: 5%;
+    padding: 6px;
+  }
+
+  .search-popup input {
+    font-size: 12px;
+    padding: 5px;
+  }
+
+  .search-popup .search-close-btn {
+    font-size: 14px;
+  }
+
+  .result-item {
+    padding: 5px;
+  }
+
+  .result-image {
+    width: 50px;
+    height: 35px;
+  }
+}

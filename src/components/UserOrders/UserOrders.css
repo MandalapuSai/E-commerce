@@ -1,0 +1,41 @@
+.clear-all-filter {
+  color: #1e1c1c;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+  font-size: 12px;
+  position: relative;
+}
+
+.clear-all-filter::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #1e1c1c;
+  transition: width 0.3s ease;
+}
+
+/* Hover effect */
+.clear-all-filter:hover {
+  color: #333;
+  transform: translateX(5px);
+}
+
+.clear-all-filter:hover::after {
+  width: 100%;
+}
+
+.border-end {
+  border-right: 1px solid #ccc !important;
+}
+
+.custom-checkbox input[type="checkbox"]:checked {
+    background-color: #0BA350 !important;
+    border-color: #0BA350 !important;
+  }
+  
+  .custom-checkbox input[type="checkbox"]:focus {
+    box-shadow: 0 0 0 0.25rem rgba(11, 163, 80, 0.25) !important;
+  }

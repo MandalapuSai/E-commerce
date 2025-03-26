@@ -1,0 +1,233 @@
+.popup-container {
+  text-align: left;
+  padding: 20px;
+}
+
+/* Product Image */
+.popup-product-img {
+  width: 100%;
+  max-width: 400px; 
+  height: auto;
+  object-fit: cover;
+  margin: 0 auto;
+  display: block;
+  border: 1px solid #000000; 
+  border-radius: 8px;
+  padding: 20px;
+}
+
+/* Buttons Container */
+.popup-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* Buttons */
+.popup-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #0BA350 !important;
+  color: #FFFF !important;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+/* Aligning Text Content */
+.popup-title,
+.popup-description,
+.popup-price,
+.popup-grams-label,
+.quantity-controls {
+  text-align: left;
+  margin-left: 10px;
+}
+
+.popup-grams-label {
+  margin-top: 10px;
+}
+
+.popup-description {
+  margin-top: 10px;
+  text-align: justify;
+}
+
+.popup-price {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Quantity Buttons & Input */
+.quantity-controls {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  /* gap: 5px; */
+  margin-top: -5px;
+}
+
+.quantity-btn {
+  background-color: #D9D9D9;
+  color: #000000;
+  border: none;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.quantity-btn:hover {
+  background-color: #D9D9D9;
+}
+
+.quantity-value {
+  font-size: 18px;
+  font-weight: bold;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Grams Buttons */
+.grams-container {
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  margin: 10px 0;
+  margin-left: 10px;
+}
+
+.grams-btn {
+  background: transparent;
+  color: #0BA350;
+  border: 2px solid #0BA350;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.grams-btn:hover,
+.grams-btn.selected {
+  background: #0BA350;
+  color: #FFFFFF;
+}
+
+/* Style for the share modal */
+.share-modal {
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.share-modal .modal-content {
+  width: 350px !important;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+}
+
+.share-modal .modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.share-modal .modal-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #333;
+}
+
+.share-modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 15px;
+}
+
+/* Social Media Icons */
+.share-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.share-icons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f1f1f1;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.share-icons a:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Individual Social Media Colors */
+.share-icons a.whatsapp {
+  background-color: #25D366;
+}
+
+.share-icons a.facebook {
+  background-color: #1877F2;
+}
+
+.share-icons a.instagram {
+  background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+.share-icons a svg {
+  color: #fff;
+  font-size: 26px;
+}
+
+
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .popup-container {
+    padding: 15px;
+  }
+
+  .popup-product-img {
+    max-width: 300px;
+  }
+
+  .popup-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .popup-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .quantity-controls {
+    justify-content: flex-start;
+  }
+}

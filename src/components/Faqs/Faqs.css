@@ -1,0 +1,40 @@
+.faq-container {
+    margin: 20px auto;
+    padding: 15px;
+  }
+  
+  .faq-accordion {
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px;
+    scrollbar-width: none;
+  }
+  
+  .faq-heading {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .faq-symbol {
+    font-size: 18px;
+    font-weight: bold;
+    margin-right: 10px;
+    color: #000;
+  }
+  
+  .accordion-button {
+    font-size: 16px;
+    font-weight: 500;
+    text-align: start;
+  }
+  
+  .accordion-body {
+    font-size: 14px;
+    text-align: start;
+  }
+  
+  .accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    color: #000;
+  }

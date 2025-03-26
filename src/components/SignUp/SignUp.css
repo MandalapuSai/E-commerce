@@ -1,0 +1,104 @@
+.signup-container {
+  height: 100vh;
+  display: flex;
+}
+
+/* Left Side - Image Section */
+.signup-image {
+  background: url("../../assets/login-banner.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  height: 100%;
+  color: white;
+}
+
+.signup-image h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.signup-image p {
+  font-size: 1.2rem;
+  max-width: 100%;
+}
+
+/* Right Side - Sign Up Form */
+.signup-form {
+  max-width: 600px;
+  width: 100%;
+  border-radius: 10px;
+  background: none;
+  border: none;
+}
+
+
+.signup-logo {
+  width: 150px;
+  margin-bottom: 5px;
+}
+
+
+.signup-btn {
+  width: 100%;
+  color: #0ba350;
+  background: #fff;
+  border: 1px solid #0ba350;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.signup-btn:hover {
+  background: #0ba350 !important;
+  color: #fff;
+  border: 1px solid #0ba350;
+}
+
+
+.signup-links {
+  text-align: center;
+  font-size: 16px;
+}
+
+.signup-links a {
+  text-decoration: none;
+  color: #0ba350;
+}
+
+.signup-links a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Tablets (768px and below) */
+@media (max-width: 992px) {
+  .signup-container {
+    padding: 10px;
+  }
+  .signup-form {
+    max-width: 400px;
+  }
+}
+
+/* Mobile (576px and below) */
+@media (max-width: 768px) {
+  .signup-image {
+    display: none;
+  }
+  .signup-container {
+    justify-content: center;
+    height: 150vh;
+  }
+  .signup-form {
+    max-width: 100%;
+    padding: 20px;
+  }
+  .signup-btn {
+    width: 100%;
+  }
+}

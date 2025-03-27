@@ -30,11 +30,14 @@ import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 
+import AdminSignIn from "./components/AdminSignIn/AdminSignIn";
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
+
 function Layout({ children }) {
   const location = useLocation();
 
   // List the paths where header and footer should be hidden
-  const hideHeaderFooterPaths = ["/signin", "/signup", "/forgot-password"];
+  const hideHeaderFooterPaths = ["/signin", "/signup", "/forgot-password", "/admin-signin", "/admin-dashboard"];
   const shouldHideHeaderFooter = hideHeaderFooterPaths.includes(
     location.pathname
   );
@@ -83,6 +86,9 @@ function App() {
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+
+          <Route path="/admin-signin" element={<AdminSignIn />} />
+          <Route path="/admin-dashboard" element={<AdminDashboard />} />
         </Routes>
       </Layout>
     </Router>

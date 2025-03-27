@@ -173,6 +173,7 @@ const  UserOrders = () => {
                 name={status}
                 checked={selectedStatus[status]}
                 onChange={handleStatusChange}
+                id={`status-${status}`}
                 className="pb-1 custom-checkbox"
               />
             ))}
@@ -191,6 +192,7 @@ const  UserOrders = () => {
                 name={year}
                 checked={selectedYears[year]}
                 onChange={handleYearChange}
+                id={`year-${year}`}
                 className="pb-1 custom-checkbox"
               />
             ))}

@@ -81,6 +81,7 @@ const HomeFeaturedProducts = () => {
                 variant="top"
                 src={product.image  }
                 className="homefeaturedproducts-img"
+                alt={product.title}
               />
               <Card.Body>
                 <p className="homefeaturedproducts-category">

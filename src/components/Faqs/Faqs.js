@@ -35,7 +35,7 @@ const FAQ = () => {
       <div className="faq-accordion">
         <Accordion>
           {faqs.map((faq) => (
-            <Accordion.Item eventKey={faq.id.toString()} key={faq.id}>
+            <Accordion.Item eventKey={faq.id.toString()} key={faq.id}   className={open === faq.id ? "active-faq" : ""}>
               <Accordion.Header onClick={() => toggleFAQ(faq.id)}>
                 <span className="faq-symbol">{open === faq.id ? "-" : "+"}</span>
                 {faq.question}

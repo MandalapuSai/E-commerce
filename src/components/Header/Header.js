@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-import {
-  Navbar,
-  Nav,
-  Container,
-  NavDropdown,
-  Button,
-} from "react-bootstrap";
+import { Navbar, Nav, Container, NavDropdown, Button } from "react-bootstrap";
 
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import {
@@ -22,14 +16,11 @@ import Logo from "../../assets/Eccomrce_logo_1.png";
 
 import { categories } from "../ProductList/ProductList";
 
-
 const Header = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
 
   const [showProductsDropdown, setShowProductsDropdown] = useState(false);
-
-
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -39,12 +30,9 @@ const Header = () => {
     setIsMobile(false);
   }, [location]);
 
-
-
   const handleCategoryClick = (categoryName) => {
     navigate(`/category/${categoryName}`);
   };
-
 
   return (
     <>
@@ -171,8 +159,9 @@ const Header = () => {
                 <NavDropdown.Divider />
                 <NavDropdown.Item
                   as={Link}
-                  to="/logout"
+                  to="/"
                   onClick={() => setIsMobile(false)}
+                  className="custom-dropdown-item"
                 >
                   Logout
                 </NavDropdown.Item>
@@ -181,10 +170,6 @@ const Header = () => {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-
-
-
-
     </>
   );
 };

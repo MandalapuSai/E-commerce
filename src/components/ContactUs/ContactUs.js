@@ -14,7 +14,7 @@ const ContactUs = () => {
           <h2>Contact Us</h2>
           <Form>
             <Form.Group controlId="formName">
-              <Form.Label>Your Name</Form.Label>
+              <Form.Label className="form-label">Your Name</Form.Label>
               <Form.Control type="text" placeholder="Enter your name" />
             </Form.Group>
 

@@ -1,18 +1,27 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { FaSignOutAlt, FaBars, FaTimes } from "react-icons/fa";
 import "./AdminDashboard.css";
-
 import logo from "../../assets/Eccomrce_logo_1.png";
 
 const AdminDashboard = () => {
   const [activeTab, setActiveTab] = useState("AdminProfile");
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const user = localStorage.getItem("adminLoggedIn");
+    if (!user) {
+      navigate("/admin-signin");
+    }
+  }, [navigate]);
 
   const handleLogout = () => {
     setShowLogoutModal(false);
-    window.location.href = "/admin-signin";
+    localStorage.removeItem("adminLoggedIn");
+    navigate("/admin-signin");
   };
 
   const toggleSidebar = () => {
@@ -26,14 +35,10 @@ const AdminDashboard = () => {
         <Col
           md={isSidebarOpen ? 3 : 0}
           lg={isSidebarOpen ? 2 : 0}
-          className={`admindashboard-sidebar ${
-            isSidebarOpen ? "open" : "closed"
-          }`}
+          className={`admindashboard-sidebar ${isSidebarOpen ? 'open' : 'closed'}`}
         >
           <div className="sidebar-header">
-            {isSidebarOpen && (
-              <img src={logo} alt="Admin Logo" className="sidebar-logo" />
-            )}
+            {isSidebarOpen && <img src={logo} alt="Admin Logo" className="sidebar-logo" />}
           </div>
           {/* Close Icon */}
           {isSidebarOpen && (
@@ -43,34 +48,19 @@ const AdminDashboard = () => {
           {/* Sidebar Menu */}
           {isSidebarOpen && (
             <ul className="sidebar-menu">
-              <li
-                onClick={() => setActiveTab("AdminProfile")}
-                className={activeTab === "AdminProfile" ? "active" : ""}
-              >
+              <li onClick={() => setActiveTab("AdminProfile")} className={activeTab === "AdminProfile" ? "active" : ""}>
                 Admin Profile
               </li>
-              <li
-                onClick={() => setActiveTab("dashboard")}
-                className={activeTab === "dashboard" ? "active" : ""}
-              >
+              <li onClick={() => setActiveTab("dashboard")} className={activeTab === "dashboard" ? "active" : ""}>
                 Categories
               </li>
-              <li
-                onClick={() => setActiveTab("users")}
-                className={activeTab === "users" ? "active" : ""}
-              >
+              <li onClick={() => setActiveTab("users")} className={activeTab === "users" ? "active" : ""}>
                 Products
               </li>
-              <li
-                onClick={() => setActiveTab("settings")}
-                className={activeTab === "settings" ? "active" : ""}
-              >
+              <li onClick={() => setActiveTab("settings")} className={activeTab === "settings" ? "active" : ""}>
                 Price & Grams
               </li>
-              <li
-                onClick={() => setActiveTab("OrderDetails")}
-                className={activeTab === "OrderDetails" ? "active" : ""}
-              >
+              <li onClick={() => setActiveTab("OrderDetails")} className={activeTab === "OrderDetails" ? "active" : ""}>
                 Order Details
               </li>
             </ul>
@@ -107,21 +97,13 @@ const AdminDashboard = () => {
       </Row>
 
       {/* Logout Confirmation Modal */}
-      <Modal
-        show={showLogoutModal}
-        onHide={() => setShowLogoutModal(false)}
-        centered
-      >
+      <Modal show={showLogoutModal} onHide={() => setShowLogoutModal(false)} centered>
         <Modal.Body>
           <p>Are you sure you want to log out?</p>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowLogoutModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={handleLogout}>
-            Logout
-          </Button>
+          <Button variant="secondary" onClick={() => setShowLogoutModal(false)}>Cancel</Button>
+          <Button variant="danger" onClick={handleLogout}>Logout</Button>
         </Modal.Footer>
       </Modal>
     </Container>

@@ -1,19 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
-import {
-  Form,
-  Button,
-  Container,
-  Card,
-  Row,
-  Col,
-  Image,
-  InputGroup,
-} from "react-bootstrap";
-import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { Form, Button, Container, Card, Row, Col, Image, InputGroup } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
-
+import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./AdminSignIn.css";
 
 import SigninPic from "../../assets/Eccomrce_logo_1.png";
@@ -26,91 +17,55 @@ const AdminSignIn = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!formData.email || !formData.password) {
-      toast.error("Please fill in all fields!");
+      toast.error("Please fill in all fields!", { position: "top-right", autoClose: 3000 });
       return;
     }
 
-    if (
-      formData.email === "admin@gmail.com" &&
-      formData.password === "admin@123"
-    ) {
-      toast.success("Login Successful!");
+    if (formData.email === "admin@gmail.com" && formData.password === "admin@123") {
+      toast.success("Login Successful!", { position: "top-right", autoClose: 3000 });
+      localStorage.setItem("adminLoggedIn", true);
       setTimeout(() => navigate("/admin-dashboard"), 2000);
     } else {
-      toast.error("Invalid email or password!");
+      toast.error("Invalid email or password!", { position: "top-right", autoClose: 3000 });
     }
   };
 
+
   return (
     <Container fluid className="admin-signin-container">
+      <ToastContainer />
       <Row className="vh-100">
-        <Col
-          md={6}
-          className="d-none d-md-flex align-items-center justify-content-center admin-signin-image"
-        >
+        <Col md={6} className="d-none d-md-flex align-items-center justify-content-center admin-signin-image">
           <div className="text-center">
             <h1 className="text-white">Welcome Back!</h1>
-            <p className="text-white">
-              Join us today and explore new opportunities.
-            </p>
+            <p className="text-white">Join us today and explore new opportunities.</p>
           </div>
         </Col>
-        <Col
-          md={6}
-          className="d-flex align-items-center justify-content-center"
-        >
+        <Col md={6} className="d-flex align-items-center justify-content-center">
           <Card className="admin-signin-form">
             <div className="text-start mb-3">
-              <Link to="/">
-                <Image
-                  src={SigninPic}
-                  alt="Logo"
-                  className="admin-signin-logo"
-                />
-              </Link>
+              <Image src={SigninPic} alt="Logo" className="admin-signin-logo" />
             </div>
-            <h3 className="text-start mb-4 admin-signin-page-title">
-              Admin Sign In
-            </h3>
+            <h3 className="text-start mb-4 admin-signin-page-title">Admin Sign In</h3>
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="formEmail" className="mb-3">
                 <Form.Label>Email</Form.Label>
-                <Form.Control
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  required
-                  placeholder="Enter your email"
-                />
+                <Form.Control type="email" name="email" value={formData.email} onChange={handleChange} required placeholder="Enter your email" />
               </Form.Group>
               <Form.Group controlId="formPassword" className="mb-3">
                 <Form.Label>Password</Form.Label>
                 <InputGroup>
-                  <Form.Control
-                    type={showPassword ? "text" : "password"}
-                    name="password"
-                    value={formData.password}
-                    onChange={handleChange}
-                    required
-                    placeholder="Enter your password"
-                  />
-                  <InputGroup.Text
-                    onClick={() => setShowPassword(!showPassword)}
-                    style={{ cursor: "pointer" }}
-                  >
+                  <Form.Control type={showPassword ? "text" : "password"} name="password" value={formData.password} onChange={handleChange} required placeholder="Enter your password" />
+                  <InputGroup.Text onClick={() => setShowPassword(!showPassword)} style={{ cursor: "pointer" }}>
                     {showPassword ? <FaEyeSlash /> : <FaEye />}
                   </InputGroup.Text>
                 </InputGroup>
               </Form.Group>
-              <Button type="submit" className="w-100 admin-signin-btn">
-                Sign In
-              </Button>
+              <Button type="submit" className="w-100 admin-signin-btn">Sign In</Button>
             </Form>
           </Card>
         </Col>

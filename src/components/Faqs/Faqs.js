@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Container, Accordion } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./FAQs.css";
+import "./Faqs.css";
 
-const FAQs = () => {
+const Faqs = () => {
   const [open, setOpen] = useState(null);
 
   useEffect(() => {
@@ -51,4 +51,4 @@ const FAQs = () => {
   );
 };
 
-export default FAQs;
+export default Faqs;

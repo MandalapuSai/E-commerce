@@ -13,7 +13,6 @@ import RecentlyViewedProducts from "./components/RecentlyViewedProducts/Recently
 import ContactUs from "./components/ContactUs/ContactUs";
 import Cart from "./components/Cart/Cart";
 import PaymentGateway from "./components/PaymentGateway/PaymentGateway";
-import FAQs from "./components/FAQs/FAQs";
 import UserProfile from "./components/UserProfile/UserProfile";
 import ProductDetailPopup from "./components/ProductDetailPopup/ProductDetailPopup";
 import ProductList from "./components/ProductList/ProductList";
@@ -26,6 +25,7 @@ import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 import AdminDashboard from "./components/Admin Dashboard/AdminDashboard";
 import AdminSignIn from "./components/AdminSignIn/AdminSignIn";
 import UserOrders from "./components/UserOrders/UserOrders";
+import Faqs from "./components/Faqs/Faqs";
 
 function Layout() {
   const location = useLocation();
@@ -53,7 +53,7 @@ function Layout() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/paymentgateway" element={<PaymentGateway />} />
-        <Route path="/faqs" element={<FAQs />} />
+        <Route path="/faqs" element={<Faqs />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/productList" element={<ProductList />} />
         <Route path="/category/:categoryName" element={<CategoryProducts />} />
@@ -65,7 +65,7 @@ function Layout() {
         <Route path="/forgot" element={<ForgotPassword />} />
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/admin-signin" element={<AdminSignIn />} />
-        <Route path="/user-order" element={<UserOrders/>} />
+        <Route path="/user-order" element={<UserOrders />} />
       </Routes>
       {!hideHeaderFooter && <Footer />}
     </>

@@ -13,7 +13,7 @@ import RecentlyViewedProducts from "./components/RecentlyViewedProducts/Recently
 import ContactUs from "./components/ContactUs/ContactUs";
 import Cart from "./components/Cart/Cart";
 import PaymentGateway from "./components/PaymentGateway/PaymentGateway";
-// import FAQs from "./components/FAQs/FAQs";
+import FAQs from "./components/FAQs/FAQs";
 import UserProfile from "./components/UserProfile/UserProfile";
 import ProductDetailPopup from "./components/ProductDetailPopup/ProductDetailPopup";
 import ProductList from "./components/ProductList/ProductList";
@@ -53,7 +53,7 @@ function Layout() {
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/paymentgateway" element={<PaymentGateway />} />
-        {/* <Route path="/faqs" element={<FAQs />} /> */}
+        <Route path="/faqs" element={<FAQs />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/productList" element={<ProductList />} />
         <Route path="/category/:categoryName" element={<CategoryProducts />} />

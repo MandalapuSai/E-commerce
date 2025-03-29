@@ -3,11 +3,11 @@ import { Container, Accordion } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./FAQs.css";
 
-const FAQ = () => {
+const FAQs = () => {
   const [open, setOpen] = useState(null);
 
   useEffect(() => {
-    document.title = "FAQ - Annapurna Farms";
+    document.title = "FAQ - E-commerce";
   }, []);
 
   const toggleFAQ = (index) => {
@@ -51,4 +51,4 @@ const FAQ = () => {
   );
 };
 
-export default FAQ;
+export default FAQs;

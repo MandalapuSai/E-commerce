@@ -1,0 +1,72 @@
+.carousel-container {
+    overflow: hidden;
+}
+
+/* Fade & Zoom Effect */
+.carousel-fade img {
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out;
+    opacity: 0.6;
+    transform: scale(1);
+}
+
+.carousel-item.active .carousel-fade img {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+/* Adjust height for responsiveness */
+.carousel-custom .carousel-item img {
+    height: 550px;
+    object-fit: cover;
+}
+
+/* Caption Styling */
+.carousel-caption {
+    text-align: start;
+    left: 4%;
+    bottom: 30%;
+} 
+
+/* Title Styling */
+.carousel-caption h3 {
+    font-size: 42px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    max-width: 60%;
+}
+
+/* Description Styling */
+.carousel-caption p {
+    font-size: 18px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) { 
+    .carousel-custom .carousel-item img {
+        height: 250px;
+    }
+    .carousel-caption h3 {
+        font-size: 24px;
+    }
+    .carousel-caption p {
+        font-size: 14px;
+    }
+    .carousel-caption {
+        bottom: 10%;
+    }
+}
+
+@media (max-width: 468px) { 
+    .carousel-custom .carousel-item img {
+        height: 200px;
+    }
+    .carousel-caption {
+        bottom: 0%;
+    }
+    .carousel-caption h3 {
+        font-size: 16px;
+    }
+    .carousel-caption p {
+        font-size: 10px;
+    }
+}

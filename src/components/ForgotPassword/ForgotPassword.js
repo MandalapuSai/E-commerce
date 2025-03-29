@@ -1,22 +1,17 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import {
-  Form,
-  Button,
-  Container,
-  Row,
-  Col,
-  Card,
-  InputGroup,
-} from "react-bootstrap";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
-import { toast } from "react-toastify";
+import { Form, Button, Container, Row, Col, Card, InputGroup } from "react-bootstrap"; // ✅ Added InputGroup
+import { FaEye, FaEyeSlash } from "react-icons/fa"; // ✅ Added FaEye & FaEyeSlash
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./ForgotPassword.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
 
-import Logo from "../../assets/Eccomrce_logo_1.png";
 
-const ForgotPassword = () => {
+
+import forgotpic from "../../assets/Eccomrce_logo_1.png";
+
+
+const ForgetPassword = () => {
   const [email, setEmail] = useState("");
   const [otp, setOtp] = useState("");
   const [showOtpInput, setShowOtpInput] = useState(false);
@@ -38,16 +33,11 @@ const ForgotPassword = () => {
     const hasNumber = /[0-9]/;
     const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/;
 
-    if (!minLength.test(password))
-      return "Password must be at least 8 characters long.";
-    if (!hasUpperCase.test(password))
-      return "Password must contain at least one uppercase letter.";
-    if (!hasLowerCase.test(password))
-      return "Password must contain at least one lowercase letter.";
-    if (!hasNumber.test(password))
-      return "Password must contain at least one number.";
-    if (!hasSpecialChar.test(password))
-      return "Password must contain at least one special character.";
+    if (!minLength.test(password)) return "Password must be at least 8 characters long.";
+    if (!hasUpperCase.test(password)) return "Password must contain at least one uppercase letter.";
+    if (!hasLowerCase.test(password)) return "Password must contain at least one lowercase letter.";
+    if (!hasNumber.test(password)) return "Password must contain at least one number.";
+    if (!hasSpecialChar.test(password)) return "Password must contain at least one special character.";
     return null;
   };
 
@@ -94,10 +84,12 @@ const ForgotPassword = () => {
   }, [isCounting, timer]);
 
   const [showNewPassword, setShowNewPassword] = useState(false);
-  const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
+const [showConfirmNewPassword, setShowConfirmNewPassword] = useState(false);
+
 
   return (
     <Container fluid className="forget-container">
+      <ToastContainer position="top-right" autoClose={3000} hideProgressBar />
       <Row className="w-100">
         <Col md={6} className="forget-image">
           <div>
@@ -105,26 +97,13 @@ const ForgotPassword = () => {
             <p>Enter your email to receive an OTP for password reset</p>
           </div>
         </Col>
-        <Col
-          md={6}
-          className="d-flex justify-content-center align-items-center"
-        >
+        <Col md={6} className="d-flex justify-content-center align-items-center">
           <Card className="forget-form">
             <div className="text-start mb-3">
-              <Link to="/">
-                <img src={Logo} alt="Logo" className="forget-logo" />
-              </Link>
+              <img src={forgotpic} alt="Logo" className="forget-logo" />
             </div>
             <h2 className="text-start mb-4">Reset Password</h2>
-            <Form
-              onSubmit={
-                showOtpInput
-                  ? showResetInputs
-                    ? handleResetPassword
-                    : handleVerifyOtp
-                  : handleSendOtp
-              }
-            >
+            <Form onSubmit={showOtpInput ? (showResetInputs ? handleResetPassword : handleVerifyOtp) : handleSendOtp}>
               {!showOtpInput && (
                 <Form.Group controlId="formEmail" className="mb-3">
                   <Form.Label>Email</Form.Label>
@@ -148,9 +127,7 @@ const ForgotPassword = () => {
                     placeholder="Enter OTP"
                   />
                   <div className="mt-2 text-danger">
-                    {timer > 0
-                      ? `OTP expires in ${timer}s`
-                      : "OTP expired! Request a new OTP."}
+                    {timer > 0 ? `OTP expires in ${timer}s` : "OTP expired! Request a new OTP."}
                   </div>
                 </Form.Group>
               )}
@@ -186,9 +163,7 @@ const ForgotPassword = () => {
                         placeholder="Confirm new password"
                       />
                       <InputGroup.Text
-                        onClick={() =>
-                          setShowConfirmNewPassword(!showConfirmNewPassword)
-                        }
+                        onClick={() => setShowConfirmNewPassword(!showConfirmNewPassword)}
                         style={{ cursor: "pointer" }}
                       >
                         {showConfirmNewPassword ? <FaEyeSlash /> : <FaEye />}
@@ -198,16 +173,8 @@ const ForgotPassword = () => {
                 </>
               )}
 
-              <Button
-                variant="success"
-                type="submit"
-                className="forget-btn w-100"
-              >
-                {!showOtpInput
-                  ? "Send OTP"
-                  : showResetInputs
-                  ? "Reset Password"
-                  : "Verify OTP"}
+              <Button variant="success" type="submit" className="forget-btn w-100">
+                {!showOtpInput ? "Send OTP" : showResetInputs ? "Reset Password" : "Verify OTP"}
               </Button>
             </Form>
           </Card>
@@ -217,4 +184,4 @@ const ForgotPassword = () => {
   );
 };
 
-export default ForgotPassword;
+export default ForgetPassword;

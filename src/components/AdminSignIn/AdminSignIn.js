@@ -21,18 +21,18 @@ const AdminSignIn = () => {
     e.preventDefault();
 
     if (!formData.email || !formData.password) {
-      toast.error("Please fill in all fields!", { position: "top-right", autoClose: 3000 });
-      return;
+        toast.error("Please fill in all fields!", { position: "top-right", autoClose: 3000 });
+        return;
     }
 
     if (formData.email === "admin@gmail.com" && formData.password === "admin@123") {
-      toast.success("Login Successful!", { position: "top-right", autoClose: 3000 });
-      localStorage.setItem("adminLoggedIn", true);
-      setTimeout(() => navigate("/admin-dashboard"), 2000);
+        toast.success("Login Successful!", { position: "top-right", autoClose: 3000 });
+        localStorage.setItem("adminLoggedIn", true);  
+        setTimeout(() => navigate("/admin-dashboard"), 2000);
     } else {
-      toast.error("Invalid email or password!", { position: "top-right", autoClose: 3000 });
+        toast.error("Invalid email or password!", { position: "top-right", autoClose: 3000 });
     }
-  };
+};
 
 
   return (

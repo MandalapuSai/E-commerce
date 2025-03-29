@@ -1,15 +1,17 @@
 import React, { useState } from "react";
-import { FaPlus, FaMinus } from "react-icons/fa";
-import "./Cart.css"; 
-import { useNavigate } from "react-router-dom";
+import { FaPlus, FaMinus } from "react-icons/fa"; // Importing icons
+import "./Cart.css"; // Importing CSS file
+import { useNavigate } from "react-router-dom"; // Importing useNavigate hook
+import { Link } from "react-router-dom";
+
 
 // Importing product images
-import Cart1 from "../../assets/cashew.png";
-import Cart2 from "../../assets/tomatopickle.png";
-import Cart3 from "../../assets/strawberry.png";
+import Cart1 from "../../assets/cart-1.png";
+import Cart2 from "../../assets/recent-3.png";
+import Cart3 from "../../assets/recent-2.png";
 
 const Cart = () => {
-    const navigate = useNavigate(); 
+    const navigate = useNavigate(); // Initialize navigation function
 
     const [cartItems, setCartItems] = useState([
         { id: 1, name: "Cashew Nuts", weight: "250 g", price: 199, quantity: 1, image: Cart1 },
@@ -17,14 +19,14 @@ const Cart = () => {
         { id: 3, name: "Strawberry", weight: "250 g", price: 250, quantity: 1, image: Cart3 },
     ]);
 
- 
+    // Increase Quantity
     const increaseQuantity = (id) => {
         setCartItems(cartItems.map(item =>
             item.id === id ? { ...item, quantity: item.quantity + 1 } : item
         ));
     };
 
-
+    // Decrease Quantity
     const decreaseQuantity = (id) => {
         setCartItems(cartItems.map(item =>
             item.id === id && item.quantity > 1 ? { ...item, quantity: item.quantity - 1 } : item
@@ -54,17 +56,17 @@ const Cart = () => {
                         Go to Product
                     </button>
                 </h4>
-                
+
                 {cartItems.length === 0 ? (
-                    <p className="empty-cart">Your cart is empty!</p>
-                ) : (
+                    <p className="empty-cart">
+                        Your cart is empty. <Link to="/">Go back to shop</Link>
+                    </p>) : (
                     cartItems.map(item => (
                         <div key={item.id} className="cart-item">
                             <img src={item.image} alt={item.name} className="cart-image" />
                             <div className="cart-details">
                                 <h5>{item.name} ({item.weight})</h5>
                                 <p>Price: ₹{item.price}/-</p>
-                   
                                 <div className="cart-quantity">
                                     <button className="cart-btn" onClick={() => decreaseQuantity(item.id)}><FaMinus /></button>
                                     <span>{item.quantity}</span>
@@ -80,18 +82,19 @@ const Cart = () => {
             {/* Cart Summary Section */}
             {cartItems.length > 0 && (
                 <div className="cart-summary">
-                    <h5 className="pb-2">Price Details:</h5>
-                    <hr/>
+                    <h5>Price Details:</h5>
                     {cartItems.map(item => (
                         <p key={item.id}>
-                            {item.name} ({item.weight}) ({item.quantity}) 
+                            {item.name} ({item.weight}) ({item.quantity})
                             <span> ₹{item.price * item.quantity}</span>
                         </p>
                     ))}
                     <p>Delivery Charges: <span>₹{deliveryCharge.toFixed(2)}</span></p>
                     <hr />
-                    <h4 className="py-3">Total Amount: ₹{finalAmount.toFixed(2)}</h4>
-                    <button className="checkout-btn">Proceed to Checkout</button>
+                    <h4>Total Amount: ₹{finalAmount.toFixed(2)}</h4>
+                    <button className="checkout-btn" onClick={() => navigate("/paymentgateway")}>
+                        Proceed to Checkout
+                    </button>
                     <button className="clear-btn" onClick={() => setCartItems([])}>Clear Cart</button>
                 </div>
             )}

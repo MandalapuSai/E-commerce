@@ -4,20 +4,20 @@ import { FaShoppingCart } from "react-icons/fa";
 import { RiShareForwardFill } from "react-icons/ri";
 import { FaWhatsapp, FaFacebook, FaInstagram } from "react-icons/fa";
 import "./ProductDetailPopup.css";
- 
+
 const ProductDetailPopup = ({ show, onHide, product }) => {
   const [quantity, setQuantity] = useState(1);
   const [selectedGrams, setSelectedGrams] = useState("250g");
   const [shareModal, setShareModal] = useState(false); // State for share modal
- 
+
   const handleQuantityIncrease = () => setQuantity((prev) => prev + 1);
   const handleQuantityDecrease = () =>
     setQuantity((prev) => (prev > 1 ? prev - 1 : 1));
- 
+
   // Open share modal
   const openShareModal = () => setShareModal(true);
   const closeShareModal = () => setShareModal(false);
- 
+
   // Share links
   const productUrl = window.location.href;
   const shareText = `${product?.title} - ₹${product?.price}/- \nBuy Now: ${productUrl}`;
@@ -26,7 +26,7 @@ const ProductDetailPopup = ({ show, onHide, product }) => {
     productUrl
   )}`;
   const instagramUrl = `https://www.instagram.com/`; // No direct share support
- 
+
   return (
     <>
       <Modal show={show} onHide={onHide} centered size="lg">
@@ -38,7 +38,7 @@ const ProductDetailPopup = ({ show, onHide, product }) => {
               alt={product?.title}
               className="popup-product-img"
             />
- 
+
             <div className="popup-buttons">
               <Button className="popup-btn">
                 {" "}
@@ -49,7 +49,7 @@ const ProductDetailPopup = ({ show, onHide, product }) => {
                 <RiShareForwardFill size={22} /> Share
               </Button>
             </div>
- 
+
             <Modal.Title className="popup-title">{product?.title}</Modal.Title>
             <p className="popup-description">
               Explore a delightful mix of farm-fresh fruits, seasonal mangoes,
@@ -58,7 +58,7 @@ const ProductDetailPopup = ({ show, onHide, product }) => {
               doorstep. Taste the best of nature and tradition in every bite!
             </p>
             <p className="popup-price">Price ₹ {product?.price}/-</p>
- 
+
             <div className="quantity-controls">
               <button onClick={handleQuantityDecrease} className="quantity-btn">
                 -
@@ -68,7 +68,7 @@ const ProductDetailPopup = ({ show, onHide, product }) => {
                 +
               </button>
             </div>
- 
+
             <p className="popup-grams-label">
               <strong>Quantity</strong>
             </p>
@@ -88,7 +88,7 @@ const ProductDetailPopup = ({ show, onHide, product }) => {
           </div>
         </Modal.Body>
       </Modal>
- 
+
       {/* Share Modal */}
       <Modal
         show={shareModal}
@@ -131,5 +131,5 @@ const ProductDetailPopup = ({ show, onHide, product }) => {
     </>
   );
 };
- 
+
 export default ProductDetailPopup;

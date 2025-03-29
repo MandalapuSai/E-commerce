@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Container, Accordion } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Faqs.css";
+import "./FAQs.css";
 
 const FAQ = () => {
   const [open, setOpen] = useState(null);

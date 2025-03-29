@@ -1,22 +1,18 @@
-.blog {
-  background-color: #ffffff !important;
+body {
+    background-color: #fff;
 }
 
 .blogpage {
-  width: 100%;
-  height: 300px;
-  background: url("../../assets/blog-banner.png") no-repeat center center/cover;
-  overflow: hidden;
+    width: 100%;
+    height: 300px;
+    background: url("../../assets/Blog-banner.png") no-repeat center center/cover;
+    overflow: hidden;
 }
 
 .cardtxt {
-  background-color: #f1eaea;
-  color: black;
-  padding: 5px 47px;
-  border-radius: 12px;
-  font-weight: 500;
+    background-color: #f1eaea;
+    color: black;
+    padding: 5px 47px;
+    border-radius: 12px;
+    font-weight: 500;
 }
-
-/* .card-img-top {
-  height: 250px;
-} */

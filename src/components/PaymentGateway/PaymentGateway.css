@@ -1,0 +1,251 @@
+/* Payment Gateway Main Container */
+.payment_gateway-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #fff;
+    gap: 20px;
+}
+
+/* Left Section - Form */
+.payment_gateway-left {
+    flex: 1;
+    min-width: 60%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Image */
+.payment_gateway-ImgUPI {
+    width: 100%;
+    /* max-width: 100%; */
+    height: auto;
+}
+
+/* Input Section */
+.paymentgateway-inputcode {
+    padding: 30px;
+}
+
+/* Payment Cards */
+.paymentgateway-cards {
+    border: none;
+}
+
+/* Button Styling */
+.payment_gateway-btn {
+    background: #0BA350;
+    color: #fff;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    width: 100%;
+    border: none;
+}
+
+.payment_gateway-btn:hover {
+    background: #056932 !important;
+    color: #fff;
+}
+
+/* Section Header */
+.payment_gateway-section h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Background for Left Section */
+.paymentgateway-leftside {
+    background: #f5f5f5;
+    padding: 40px;
+}
+
+/* Box Styling */
+.paymentgateway-box {
+    background: none;
+    border: none;
+}
+
+/* Input Fields */
+.payment_gateway-row .form-control {
+    margin-bottom: 15px;
+    padding: 10px;
+    font-size: 14px;
+}
+
+/* Checkbox Label */
+.payment_gateway-row label {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Shipping Method */
+.payment_gateway-shipping-method {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background-color: #f9f9f9;
+    margin-bottom: 15px;
+}
+
+/* Payment Method */
+.payment_gateway-payment-method img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: 6px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+/* Billing Address */
+.payment_gateway-section label input {
+    margin-right: 8px;
+}
+
+/* Pay Now Button */
+.payment_gateway-pay-button {
+    width: 100%;
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+
+/* Right Section - Order Summary */
+.payment_gateway-right {
+    flex: 1;
+    min-width: 35%;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Order Summary Title */
+.order_summary h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Order Details */
+.order_item,
+.order_total,
+.order_shipping,
+.order_grand_total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+/* Grand Total */
+.order_grand_total {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 15px;
+    border-top: 1px solid #ddd;
+    padding-top: 10px;
+}
+.text-danger{
+    font-size: 14px;
+}
+
+/* 🔥 RESPONSIVE DESIGN 🔥 */
+
+/* Tablets (Max Width: 1024px) */
+@media (max-width: 1024px) {
+    .payment_gateway-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .payment_gateway-left,
+    .payment_gateway-right {
+        width: 90%;
+        min-width: auto;
+    }
+
+    .paymentgateway-leftside {
+        padding: 10px;
+    }
+
+    .payment_gateway-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Mobile (Max Width: 768px) */
+@media (max-width: 768px) {
+    .payment_gateway-left,
+    .payment_gateway-right {
+        width: 100%;
+        padding: 20px;
+    }
+
+    .paymentgateway-leftside {
+        padding: 5px;
+    }
+
+    .paymentgateway-inputcode {
+        padding: 10px;
+    }
+
+    .payment_gateway-payment-method img {
+        max-width: 100%;
+    }
+
+    .payment_gateway-shipping-method {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .payment_gateway-pay-button {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+/* Small Mobile (Max Width: 480px) */
+@media (max-width: 480px) {
+    .payment_gateway-container {
+        padding: 10px;
+    }
+
+    .payment_gateway-left,
+    .payment_gateway-right {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .payment_gateway-section h2 {
+        font-size: 16px;
+    }
+
+    .payment_gateway-btn {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .order_summary h2 {
+        font-size: 16px;
+    }
+}

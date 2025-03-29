@@ -1,0 +1,190 @@
+/* Banner Section */
+.about-banner {
+    background-size: cover;
+    background-position: center;
+    height: 300px;
+}
+
+/* Mission Section */
+.about-mission {
+    margin: 50px 0;
+}
+
+.about-img {
+    width: 100%;
+    border-radius: 0px;
+    margin-left: -30px;
+    height: 300px;
+}
+
+.about-tag {
+    color: #6c757d;
+}
+
+.about-heading {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.about-text {
+    color: #555;
+}
+
+/* Numbers Section */
+.about-stats {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.about-stats h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+.about-stats p {
+    color: #777;
+}
+
+/* Portfolio Section */
+.about-portfolio {
+    margin-top: 50px;
+    justify-content: center !important;
+}
+
+.about-numbers {
+    justify-content: center !important;
+}
+
+.about-portfolio p {
+    color: #555;
+}
+
+/* Carousel Section */
+.about-carousel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+    position: relative;
+}
+
+.about-carousel-image {
+    width: 100%;
+}
+
+.carousel-content {
+    position: relative;
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.carousel-overlay {
+    position: absolute;
+    bottom: 0px;
+    right: 0%;
+    text-align: left;
+    background: #000;
+    color: white;
+    padding: 15px;
+    width: 30%;
+}
+
+.carousel-title {
+    font-size: 1.8rem;
+}
+
+.carousel-text {
+    font-size: 1rem;
+}
+
+/* Slider Arrows */
+/* Slider Arrows */
+.slider-arrow-container {
+    position: absolute;
+    bottom: -30px;
+    left: 145px;
+    display: flex;
+    gap: 0px;
+}
+
+.slider-arrow {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #fff;
+    background: #000;
+}
+
+.slider-arrow:hover {
+    background: #28a745;
+}
+
+@media (max-width: 768px) {
+    .about-heading {
+        font-size: 1.5rem;
+    }
+
+    .about-text {
+        font-size: 1rem;
+    }
+
+    .about-img {
+        height: auto;
+    }
+
+    .carousel-overlay {
+        width: 60%;
+    }
+
+    .slider-arrow-container {
+        bottom: -5px;
+        left: 25px;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-heading {
+        font-size: 1.2rem;
+    }
+
+    .about-text {
+        font-size: 0.9rem;
+    }
+
+    .about-img {
+        height: auto;
+    }
+
+    .carousel-subtitle {
+        margin-bottom: 0px;
+        font-size: 10px;
+    }
+
+    .carousel-overlay {
+        width: 50%;
+        font-size: 12px;
+        padding: 6px;
+        border-radius: none;
+    }
+
+    .slider-arrow-container {
+        bottom: 9px;
+        left: 20px;
+    }
+
+    .slider-arrow {
+        font-size: 1rem;
+        padding: 3px 6px;
+    }
+
+    .carousel-text {
+        font-size: 9px;
+    }
+
+    .carousel-title {
+        font-size: 12px;
+    }
+}

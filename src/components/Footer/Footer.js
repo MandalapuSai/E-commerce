@@ -18,10 +18,10 @@ const Footer = () => {
           <Col md={2} className="footer-links">
             <h5>Support</h5>
             <ul>
-              <li><a href="/">Home</a></li>
-              <li><a href="/about">About Us</a></li>
-              <li><a href="/blog">Our Blog</a></li>
               <li><a href="/contact">Contact Us</a></li>
+              <li><a href="/about">About Us</a></li>
+              <li><a href="/size-guide">Size Guide</a></li>
+              <li><a href="/privacy-policy">Privacy Policy</a></li>
             </ul>
           </Col>
 
@@ -29,10 +29,11 @@ const Footer = () => {
           <Col md={2} className="footer-links">
             <h5>Menu</h5>
             <ul>
-              <li><a href="/">Fruits</a></li>
-              <li><a href="/fruits">Dry Fruits</a></li>
-              <li><a href="/dry-fruits">Powders</a></li>
-              <li><a href="/pickles">Spices</a></li>
+              <li><a href="/">Home</a></li>
+              <li><a href="/fruits">Fruits</a></li>
+              <li><a href="/dry-fruits">Dry Fruits</a></li>
+              <li><a href="/pickles">Pickles</a></li>
+              <li><a href="/powders">Powders</a></li>
             </ul>
           </Col>
 
@@ -40,8 +41,8 @@ const Footer = () => {
           <Col md={2} className="footer-links">
             <h5>Company</h5>
             <ul>
-              <li><a href="/signin">Login</a></li>
-              <li><a href="/signup">Register</a></li>
+              <li><a href="/login">Login</a></li>
+              <li><a href="/register">Register</a></li>
               <li><a href="/admin-login">Admin Login</a></li>
               <li><a href="/affiliate">Affiliate</a></li>
             </ul>
@@ -49,7 +50,7 @@ const Footer = () => {
 
           {/* Contact Information Section */}
           <Col md={3} className="footer-contact">
-            <h5 style={{color:"#f4d000"}}>Contact Information</h5>
+            <h5>Contact Information</h5>
             <p><FaMapMarkerAlt /> 123 Street, Vijayawada, AP</p>
             <p><FaPhone /> +91-9999-44-2222</p>
             <p><FaEnvelope /> info@sample.com</p>
@@ -73,8 +74,8 @@ const Footer = () => {
         </Row>
 
         {/* Copyright Section */}
-        <Row className="footer-bottom">
-          <Col className="text-center d-flex justify-content-center mt-3">
+        <Row className="footer-bottom mt-4">
+          <Col className="text-center">
             <p>Copyright © 2025 Digisphere Company. All rights reserved.</p>
           </Col>
         </Row>

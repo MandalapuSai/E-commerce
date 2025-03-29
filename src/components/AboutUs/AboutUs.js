@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import "./AboutUs.css";
 
-import AboutBanner from "../../assets/About-banner.png";
-import AboutBanner1 from "../../assets/About-banner-1.png";
-import AboutBanner2 from "../../assets/About-banner-2.png";
-import AboutBanner3 from "../../assets/About-banner-3.png";
+import AboutBanner from "../../assets/About-banner-1.png";
+import AboutBanner1 from "../../assets/About-banner-2.png";
+import AboutBanner2 from "../../assets/About-banner-3.png";
+import AboutBanner3 from "../../assets/About-banner.png";
 import AboutUs from "../../assets/aboutus.png";
 
 const About = () => {

@@ -17,7 +17,10 @@
   font-weight: 500;
   margin: 0 5px;
 }
-
+.custom-dropdown-item:hover {
+  background-color: #0BA350 !important;
+  color: white !important;
+}
 .header .nav-link:hover {
   color: #ffcc00 !important;
 }
@@ -32,7 +35,7 @@
   color: #ffcc00 !important;
 }
 
-/* Search Popup */
+/* 🔥 Search Popup */
 .search-popup {
   position: fixed;
   top: 15%;
@@ -47,7 +50,7 @@
   gap: 10px;
 }
 
-/* Search Input */
+/* 🔥 Search Input */
 .search-popup input {
   flex: 1;
   padding: 10px;
@@ -57,7 +60,7 @@
   outline: none;
 }
 
-/* Close Button */
+/* 🔥 Close Button */
 .search-popup .search-close-btn {
   background: none;
   border: none;
@@ -70,7 +73,7 @@
   color: #ffcc00;
 }
 
-/*Search Results */
+/* 🔥 Search Results */
 .search-results {
   position: absolute;
   top: 100%;
@@ -85,7 +88,7 @@
   z-index: 10;
 }
 
-/*  Individual Result Item */
+/* 🔥 Individual Result Item */
 .result-item {
   display: flex;
   align-items: center;
@@ -98,7 +101,7 @@
   cursor: pointer;
 }
 
-/*  Product Image */
+/* 🔥 Product Image */
 .result-image {
   width: 100px;
   height: 80px;
@@ -115,11 +118,6 @@
   padding: 10px;
 }
 
-
-.custom-dropdown-item:hover {
-  background-color: #0BA350 !important; 
-  color: white !important;
-}
 
 /* Dropdown Hover */
 #products-dropdown:hover .dropdown-menu {

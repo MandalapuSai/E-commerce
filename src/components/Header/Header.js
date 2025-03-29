@@ -180,7 +180,7 @@ const Header = () => {
                 <NavDropdown.Item
                   className="custom-dropdown-item"
                   as={Link}
-                  to="/profile"
+                  to="/user-profile"
                   onClick={() => setIsMobile(false)}
                 >
                   My Profile
@@ -188,7 +188,7 @@ const Header = () => {
                 <NavDropdown.Item
                   className="custom-dropdown-item"
                   as={Link}
-                  to="/user-order"
+                  to="/user-orders"
                   onClick={() => setIsMobile(false)}
                 >
                   My Orders

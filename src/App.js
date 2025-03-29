@@ -26,12 +26,14 @@ import Cart from "./components/Cart/Cart";
 import UserProfile from "./components/UserProfile/UserProfile";
 import UserOrders from "./components/UserOrders/UserOrders";
 
+
 import SignIn from "./components/SignIn/SignIn";
 import SignUp from "./components/SignUp/SignUp";
 import ForgotPassword from "./components/ForgotPassword/ForgotPassword";
 
 import AdminSignIn from "./components/AdminSignIn/AdminSignIn";
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
+import PaymentGateway from "./components/PaymentGateway/PaymentGateway";
 
 function Layout({ children }) {
   const location = useLocation();
@@ -80,6 +82,7 @@ function App() {
           <Route path="/faqs" element={<Faqs />} />
           <Route path="/contact" element={<ContactUs />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/paymentgateway" element={<PaymentGateway />} />
           <Route path="/user-profile" element={<UserProfile />} />
           <Route path="/user-orders" element={<UserOrders />} />
 

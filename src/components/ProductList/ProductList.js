@@ -255,8 +255,8 @@ const ProductList = () => {
     navigate(`/category/${categoryName}`);
   };
 
-  const handleShowPopup = (product) => {
-    setSelectedProduct(product);
+  const handleShowPopup = (selectedItem) => {
+    setSelectedProduct(selectedItem);
     setShowPopup(true);
   };
 
@@ -342,7 +342,7 @@ const ProductList = () => {
         <Row>
           {recentlyViewed.map((product, idx) => (
             <Col key={idx} sm={12} md={6} lg={3} className="mb-5">
-              <Card className="product-card">
+              <Card className="product-card" onClick={() => handleShowPopup(product)}>
                 <Card.Img
                   variant="top"
                   src={product.image}

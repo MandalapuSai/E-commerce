@@ -5,13 +5,10 @@ const ScrollToTop = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    console.log("Navigated to:", pathname); // Debugging log
-    window.scrollTo(0, 0); // Force scroll to top
-    document.documentElement.scrollTop = 0; // Extra check
-    document.body.scrollTop = 0; // Extra check for older browsers
+    window.scrollTo(0, 0); // Scroll to the top on route change
   }, [pathname]);
 
-  return null;
+  return null; // This component doesn't render anything, just triggers scroll
 };
 
 export default ScrollToTop;

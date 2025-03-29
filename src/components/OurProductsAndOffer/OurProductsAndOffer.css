@@ -1,0 +1,151 @@
+.ourproducts-section {
+  padding: 50px 0;
+  overflow: hidden;
+}
+
+.ourproducts-title {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.ourproducts-title span {
+  color: #198754;
+}
+
+.ourproducts-underline {
+  width: 80px;
+  height: 3px;
+  background-color: #198754;
+  margin: 5px auto 20px auto;
+}
+
+/* Product Item Styling */
+.ourproducts-item {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ourproducts-circle {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  border: 2px solid #198754;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.ourproducts-circle:hover {
+  box-shadow: 0px 4px 20px rgba(25, 135, 84, 0.4); /* Softer & spread-out glow */
+  transform: scale(1.05);
+  background: #cdeccd; /* Light green */
+  transition: all 0.3s ease-in-out;
+}
+
+.ourproducts-circle img {
+  width: 80%;
+  height: auto;
+}
+
+.ourproducts-name {
+  font-size: 20px;
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* Section Styling */
+.homeWeeklyOffer-section {
+  padding: 30px 0;
+}
+
+/* Text Content */
+.homeWeeklyOffer-subtitle {
+  font-size: 16px;
+  color: #666;
+  font-weight: 500;
+}
+.homeWeeklyOffer-row {
+  background-color: #f2fff0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.homeWeeklyOffer-title {
+  font-size: 28px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.homeWeeklyOffer-title span {
+  color: #198754; /* Bootstrap success green */
+}
+
+.homeWeeklyOffer-desc {
+  font-size: 16px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* Button Styling */
+.homeWeeklyOffer-btn {
+  background-color: #198754;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.homeWeeklyOffer-btn:hover {
+  background-color: #146c43;
+}
+
+/* Image Styling */
+.homeWeeklyOffer-image img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+/* Responsive */
+
+@media (max-width: 468px) {
+  .ourproducts-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .ourproducts-title {
+    font-size: 24px;
+  }
+
+  .ourproducts-name {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 768px) {
+  .ourproducts-circle {
+    width: 100px;
+    height: 100px;
+  }
+
+  .homeWeeklyOffer-title {
+    font-size: 24px;
+  }
+
+  .homeWeeklyOffer-desc {
+    font-size: 14px;
+  }
+
+  .homeWeeklyOffer-btn {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  .homeWeeklyOffer-image {
+    text-align: center;
+    margin-top: 20px;
+  }
+}

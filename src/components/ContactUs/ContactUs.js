@@ -3,7 +3,7 @@ import { Container, Row, Col, Form, Button } from 'react-bootstrap';
 import './ContactUs.css'; 
 
 // Renaming the image import to avoid naming conflict
-import contactImage from "../../assets/Contactpage-1.jpg";
+import contactImage from "../../assets/contact-img.jpg";
 
 const ContactUs = () => {
   return (
@@ -14,7 +14,7 @@ const ContactUs = () => {
           <h2>Contact Us</h2>
           <Form>
             <Form.Group controlId="formName">
-              <Form.Label>Your Name</Form.Label>
+              <Form.Label className="form-label">Your Name</Form.Label>
               <Form.Control type="text" placeholder="Enter your name" />
             </Form.Group>
 

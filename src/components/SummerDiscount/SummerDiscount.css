@@ -1,0 +1,150 @@
+.SummerDiscount-main {
+  padding: 30px 0;
+  text-align: center;
+  overflow: hidden;
+}
+
+.SummerDiscount-row1 {
+  background-color: #eef8e9;
+  border-radius: 5px;
+  margin: 0;
+}
+
+.SummerDiscount-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.SummerDiscount-title span {
+  color: #26a541;
+}
+
+.SummerDiscount-subtitle {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+.SummerDiscount-timer {
+  display: flex;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: bold;
+  color: #333;
+  gap: 10px; /* Spacing between numbers */
+}
+
+.SummerDiscount-timer span {
+  color: #26a541;
+  padding: 8px 12px;
+  font-size: 24px;
+  min-width: 50px;
+  text-align: center;
+}
+
+.SummerDiscount-timer-labels {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+  color: #000;
+  margin-top: 5px;
+  gap: 72px;
+}
+
+.SummerDiscount-timer-labels span {
+  min-width: 50px;
+  text-align: center;
+}
+
+.SummerDiscount-button {
+  background-color: #26a541 !important;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: 0.3s;
+  margin-top: 15px;
+}
+
+.SummerDiscount-button:hover {
+  background-color: #1f8b35 !important;
+}
+
+.SummerDiscount-image-frame img {
+  width: 100%;
+  border-radius: 0px;
+}
+
+@media (max-width: 768px) {
+  .SummerDiscount-title {
+    font-size: 20px;
+  }
+
+  .SummerDiscount-subtitle {
+    font-size: 14px;
+  }
+
+  .SummerDiscount-timer {
+    font-size: 20px;
+    gap: 0px;
+  }
+
+  .SummerDiscount-timer span {
+    font-size: 18px;
+    padding: 6px 10px;
+    min-width: 45px;
+  }
+
+  .SummerDiscount-timer-labels {
+    font-size: 12px;
+    gap: 40px;
+  }
+
+  .SummerDiscount-image-frame img {
+    max-width: 180px;
+  }
+  .px-5 {
+    padding: 25px !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .SummerDiscount-title {
+    font-size: 18px;
+  }
+
+  .SummerDiscount-subtitle {
+    font-size: 12px;
+  }
+
+  .SummerDiscount-timer {
+    font-size: 18px;
+    gap: 5px;
+  }
+
+  .SummerDiscount-timer span {
+    font-size: 16px;
+    padding: 5px 8px;
+    min-width: 20px;
+  }
+
+  .SummerDiscount-timer-labels {
+    font-size: 10px;
+    gap: 10px;
+  }
+
+  .SummerDiscount-button {
+    font-size: 14px;
+    padding: 8px 16px;
+    margin-bottom: 10px;
+  }
+
+  .SummerDiscount-image-frame img {
+    max-width: 150px;
+  }
+  .px-5 {
+    padding: 20px !important;
+  }
+}

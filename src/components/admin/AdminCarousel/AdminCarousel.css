@@ -1,0 +1,49 @@
+.table thead {
+    background-color: #2d4827;
+    color: white;
+}
+
+.btn-edit {
+    padding: 3px 20px;
+    background-color: #2f4d2f;
+    color: white;
+    margin-right: 22px;
+    border: none;
+    border-radius: 4px;
+}
+
+.btn-delete {
+    padding: 3px 17px;
+    background-color: rgb(237, 29, 29);
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.file-upload {
+    max-width: 300px;
+}
+
+
+.selected-file {
+    position: relative;
+    display: inline-block;
+}
+
+.img-preview {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-remove {
+    position: absolute;
+    top: -7px;
+    right: -16px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 14px;
+}

@@ -1,0 +1,222 @@
+/* Main Container */
+.SpecialSale-main {
+    padding: 40px 0;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* Title with Half Underline */
+.SpecialSale-title {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 35px;
+    display: inline-block;
+    position: relative;
+    padding-top: 20px;
+}
+
+.SpecialSale-title::after {
+    content: "";
+    width: 6%;
+    height: 4px;
+    background-color: #26a541;
+    position: absolute;
+    left: 44%;
+    bottom: -8px;
+    border-radius: 2px;
+}
+
+.homefeaturedproducts-carticon {
+    margin-right: 5px;
+    font-size: 14px;
+}
+
+.SpecialSale-title span {
+    color: #26a541;
+}
+
+.SpecialSale-row1 {
+    background: #F5F5F5;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Product Card */
+.SpecialSale-card {
+    display: flex;
+    border: 2px #D9D9D9 solid !important;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 29px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    cursor: pointer;
+}
+
+/* Discount Badge */
+.SpecialSale-badge {
+    position: absolute;
+    background: #26a541;
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 3px;
+    top: 10px;
+    left: 10px;
+}
+
+/* Card Content */
+.SpecialSale-content {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Product Image */
+.SpecialSale-image {
+    flex: 0.4;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SpecialSale-image img {
+    width: 200px;
+    height: 175px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+
+/* Product Details */
+.SpecialSale-info {
+    flex: 0.6;
+    text-align: left;
+    padding-left: 15px;
+}
+
+.SpecialSale-info h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.SpecialSale-info h5 span {
+    color: #26a541;
+}
+
+.SpecialSale-weight {
+    font-size: 14px;
+    color: #777;
+}
+
+/* Pricing */
+.SpecialSale-price {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+}
+
+.SpecialSale-oldPrice {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+/* Description */
+.SpecialSale-desc {
+    font-size: 12px;
+    color: #777;
+    margin-top: 5px;
+}
+
+/* Add Button */
+.SpecialSale-btn {
+    background-color: #26a541;
+    border: none;
+    padding: 6px 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    transition: 0.3s;
+    color: white;
+}
+
+.SpecialSale-btn:hover {
+    background-color: #1f8b35;
+}
+
+
+.recently-viewed-section-container {
+    background-color: #F5F5F5;
+  }
+
+@media (max-width: 768px) {
+    .SpecialSale-title {
+        font-size: 24px;
+    }
+
+    .SpecialSale-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .SpecialSale-content {
+        flex-direction: column;
+    }
+
+    .SpecialSale-image {
+        flex: unset;
+    }
+
+    .SpecialSale-info {
+        flex: unset;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    .SpecialSale-price {
+        font-size: 16px;
+    }
+
+    .SpecialSale-oldPrice {
+        font-size: 12px;
+    }
+
+    .SpecialSale-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .SpecialSale-title {
+        font-size: 22px;
+    }
+
+    .SpecialSale-card {
+        padding: 10px;
+    }
+
+    .SpecialSale-info h5 {
+        font-size: 16px;
+    }
+
+    .SpecialSale-price {
+        font-size: 14px;
+    }
+
+    .SpecialSale-btn {
+        padding: 5px 12px;
+        font-size: 12px;
+    }
+
+    .SpecialSale-title::after {
+        width: 40px;
+    }
+}

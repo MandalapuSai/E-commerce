@@ -1,0 +1,62 @@
+.faq-container {
+  margin: 20px auto;
+  padding: 15px;
+}
+
+.faq-accordion {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 10px;
+  scrollbar-width: none;
+}
+
+.faq-heading {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.faq-symbol {
+  font-size: 18px;
+  font-weight: bold;
+  margin-right: 10px;
+  color: #000;
+}
+
+.accordion-button {
+  font-size: 16px;
+  font-weight: 500;
+  text-align: start;
+}
+
+.accordion-body {
+  font-size: 14px;
+  text-align: start;
+}
+
+/* .accordion-button:not(.collapsed) {
+    background-color: #f8f9fa;
+    color: #000;
+  } */
+
+/* Change background when the accordion is active (opened) */
+.accordion-button:not(.collapsed) {
+  background-color: #0ba350 !important; /* Green background when open */
+  color: white !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* Change background when hovering over the button */
+.accordion-button:hover {
+  background-color: #f8f9fa !important;
+  color: #000 !important;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Remove Bootstrap default blue outline on focus */
+.accordion-button:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border: none !important;
+}

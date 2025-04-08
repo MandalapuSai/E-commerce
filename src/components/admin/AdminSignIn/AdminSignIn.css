@@ -1,0 +1,76 @@
+/* AdminSignIn.css */
+.admin-signin-container {
+  height: 100vh;
+}
+
+.admin-signin-image {
+  background: url("../../../assets/login-banner.jpg") center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.admin-signin-image h1,
+.admin-signin-image p {
+  max-width: 100%;
+}
+
+.admin-signin-form {
+  max-width: 600px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+}
+
+.admin-signin-btn {
+  width: 100%;
+  color: #0ba350;
+  background: #fff;
+  border: 1px solid #0ba350;
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.admin-signin-btn:hover {
+  background: #0ba350 !important;
+  color: #fff;
+  border: 1px solid #0ba350;
+}
+
+.admin-signin-logo {
+  width: 120px;
+}
+
+.admin-signin-page-title {
+  font-size: 32px;
+  color: #0ba350;
+}
+
+@media (max-width: 992px) {
+  .admin-signin-form {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-signin-image {
+    display: none;
+  }
+  .admin-signin-container {
+    justify-content: center;
+  }
+  .admin-signin-form {
+    max-width: 100%;
+    padding: 20px;
+  }
+  .admin-signin-btn {
+    width: 100%;
+  }
+  .text-muted {
+    font-size: 12px;
+  }
+}

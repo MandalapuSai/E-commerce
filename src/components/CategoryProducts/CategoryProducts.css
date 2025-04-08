@@ -1,0 +1,34 @@
+.category-banner-section {
+  display: flex;
+  align-items: center;
+  /* padding: 60px 20px; */
+}
+
+.category-banner-content {
+  text-align: start;
+  /* padding-left: 50px; */
+}
+
+.category-banner-content h2 {
+  color: #000;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.category-heading {
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: inline-block;
+  position: relative;
+}
+
+.category-heading::after {
+  content: "";
+  display: block;
+  width: 68%;
+  height: 4px;
+  background-color: #28a745;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+}

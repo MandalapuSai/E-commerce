@@ -1,0 +1,143 @@
+.admindashboard-container {
+  height: 100vh;
+  overflow: hidden;
+  background: #ffffff !important;
+}
+
+.admindashboard-sidebar {
+  background: #2f4d2f;
+  color: white;
+  height: 100vh;
+  padding: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 250px;
+  transition: width 0.3s ease-in-out;
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1050;
+}
+
+.admindashboard-sidebar.closed {
+  width: 0;
+  padding: 0;
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  position: relative;
+}
+
+.sidebar-logo {
+  max-width: 120px;
+  height: auto;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.admindashboard-sidebar.closed .sidebar-logo {
+  opacity: 0;
+}
+
+.sidebar-toggle-icon {
+  font-size: 28px;
+  cursor: pointer;
+  color: #2f4d2f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 35px;
+  left: 15px;
+  z-index: 1100;
+  transition: 0.3s ease-in-out;
+}
+
+.sidebar-close-icon {
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+  transition: transform 0.3s ease-in-out;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.sidebar-menu {
+  list-style: none !important;
+  padding: 0;
+  display: grid;
+}
+
+.sidebar-menu li {
+  padding: 12px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: 0.3s;
+  border-bottom: 1px solid #ccc;
+  justify-content: center;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.sidebar-menu li:hover {
+  background: #f0f0f0;
+}
+
+.sidebar-menu-link {
+  color: #fff;
+  text-decoration: none;
+  padding: 1px 1px;
+  transition: color 0.3s;
+}
+
+.sidebar-menu-link:hover {
+  color: #0ba350;
+  font-weight: 500;
+}
+
+.logout-button {
+  text-align: center;
+  padding: 20px;
+}
+
+.admindashboard-content {
+  padding: 30px;
+  background: #ffffff;
+  height: 100vh;
+  overflow-y: auto;
+  transition: 0.3s ease-in-out;
+  margin-left: 250px;
+}
+
+.admindashboard-sidebar.closed ~ .admindashboard-content {
+  margin-left: 60px;
+  width: calc(100% - 60px);
+  background: #f4f4f4;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .admindashboard-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1050;
+  }
+
+  .admindashboard-sidebar.closed {
+    width: 0;
+  }
+
+  .admindashboard-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}

@@ -1,0 +1,40 @@
+
+.not-found-container {
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.not-found-content {
+  text-align: center;
+}
+
+.not-found-title {
+  font-size: 5rem;
+  font-weight: bold;
+  color: #0ba350;
+}
+
+.not-found-message {
+  font-size: 1.5rem;
+  color: #555;
+}
+
+.not-found-suggestion {
+  font-size: 1rem;
+  color: #888;
+}
+
+.go-back-btn {
+  background-color: #0ba350;
+  border-color: #0ba350;
+  color: #fff;
+  padding: 8px 23px;
+  border-radius: 3px;
+}
+
+.go-back-btn:hover {
+  background-color: #067a2d;
+  border-color: #067a2d;
+}

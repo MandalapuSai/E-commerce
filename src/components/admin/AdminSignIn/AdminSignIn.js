@@ -12,12 +12,11 @@ import {
 } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
-
+import { Admin_Login } from "../../../api/api";
 
 import "./AdminSignIn.css";
 
 import SigninPic from "../../../assets/Eccomrce_logo_1.png";
-import { Admin_Login } from "../../Api/Api";
 
 const AdminSignIn = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
@@ -27,25 +26,6 @@ const AdminSignIn = () => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-
-  //   if (!formData.email || !formData.password) {
-  //     toast.error("Please fill in all fields!");
-  //     return;
-  //   }
-
-  //   if (
-  //     formData.email === "admin@gmail.com" &&
-  //     formData.password === "admin@123"
-  //   ) {
-  //     toast.success("Login Successful!");
-  //     setTimeout(() => navigate("/admin-dashboard"), 2000);
-  //   } else {
-  //     toast.error("Invalid email or password!");
-  //   }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,9 +48,9 @@ const AdminSignIn = () => {
       const data = await response.json();
       if (response.ok) {
         toast.success(data.message);
-        console.log(data.admin)
+        // console.log(data.admin)
         localStorage.setItem("User", JSON.stringify(data.admin));
-        setTimeout(() => navigate("/admin-dashboard"), 2000);
+        setTimeout(() => navigate("/admin-dashboard/"), 2000);
       } else {
         toast.error(data.message);
       }
@@ -81,9 +61,6 @@ const AdminSignIn = () => {
 
   }
 
-
-
-
   return (
     <Container fluid className="admin-signin-container">
       <Row className="vh-100">
@@ -91,12 +68,12 @@ const AdminSignIn = () => {
           md={6}
           className="d-none d-md-flex align-items-center justify-content-center admin-signin-image"
         >
-          <div className="text-center">
+          {/* <div className="text-center">
             <h1 className="text-white">Welcome Back!</h1>
             <p className="text-white">
               Join us today and explore new opportunities.
             </p>
-          </div>
+          </div> */}
         </Col>
         <Col
           md={6}

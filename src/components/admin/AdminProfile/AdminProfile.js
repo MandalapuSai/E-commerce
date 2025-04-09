@@ -6,7 +6,7 @@ import "./AdminProfile.css";
 const AdminProfile = () => {
   return (
     <Container fluid className="mt-4">
-      <h4 className="mb-4">Admin Profile</h4>
+      <h4 className="mb-4 fw-bold">Admin Profile</h4>
       <div className="table-responsive">
         <Table bordered className="profile-table">
           <thead>

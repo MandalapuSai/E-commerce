@@ -251,8 +251,8 @@ const ProductList = () => {
   const navigate = useNavigate(); // Initialize the navigate hook
 
   const handleViewMore = (categoryName) => {
-    // Navigate to the category detail page
-    navigate(`/category/${categoryName}`);
+  const formattedCategory = categoryName.toLowerCase().replace(/\s+/g, "-");
+  navigate(`/category/${formattedCategory}`);
   };
 
   const handleShowPopup = (selectedItem) => {

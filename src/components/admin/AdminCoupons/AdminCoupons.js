@@ -1,33 +1,39 @@
 import React, { useEffect, useState } from "react";
 import {
-  Container, Form, Button, Row, Col, Table, Image, Modal,
+  Container,
+  Form,
+  Button,
+  Row,
+  Col,
+  Table,
+  Modal,
 } from "react-bootstrap";
-import { FaTimes } from "react-icons/fa";
+
 import "./AdminCoupons.css";
 import { toast } from "react-toastify";
-
-import { Add_Coupon, Get_Coupons, Delete_Coupon, Update_Coupon } from "../../Api/Api";
+import { FaTrashAlt } from "react-icons/fa";
+import { FiEdit } from "react-icons/fi";
+import { COUPONS_API } from "../../../api/api";
 
 const AdminCoupons = () => {
-  const [Coupons, setCoupons] = useState([
-    {
-      Coupon_Code: "AWS123",
-      Coupon_Discont: "15%",
-      amount: '2500',
-      startDate: '10/01/2024',
-      Expirydate: '25/04/2025',
-      status: 'Active'
-    },
-    {
-      Coupon_Code: "AWS456",
-      Coupon_Discont: "25%",
-      amount: '200',
-      startDate: '2/05/2024',
-      Expirydate: '05/04/2005',
-      status: 'In Active'
-    },
-  ]);
-
+  // const [Coupons, setCoupons] = useState([
+  //   {
+  //     Coupon_Code: "AWS123",
+  //     Coupon_Discont: "15%",
+  //     amount: '2500',
+  //     startDate: '10/01/2024',
+  //     Expirydate: '25/04/2025',
+  //     status: 'Active'
+  //   },
+  //   {
+  //     Coupon_Code: "AWS456",
+  //     Coupon_Discont: "25%",
+  //     amount: '200',
+  //     startDate: '2/05/2024',
+  //     Expirydate: '05/04/2005',
+  //     status: 'In Active'
+  //   },
+  // ]);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -38,37 +44,39 @@ const AdminCoupons = () => {
   const [Amount, SetAmount] = useState("");
   const [Status, SetStatus] = useState("");
 
-
   const [GetCouponsData, SetGetCoupons] = useState([]);
-
 
   useEffect(() => {
     Get_Coupons_Data_List();
   }, []);
 
-
-
   const Get_Coupons_Data_List = async () => {
     try {
-      const response = await fetch(Get_Coupons);
+      const response = await fetch(COUPONS_API.GET_ALL);
       const data = await response.json();
       SetGetCoupons(data.coupons);
-      // console.log(data.coupons)
+      // console.log(data.coupons);
     } catch (error) {
-      console.error('Error fetching categories:', error);
+      console.error("Error fetching categories:", error);
     }
   };
 
-
   const AddBtn = async (e) => {
     e.preventDefault();
-    if (!CouponCode || !Discount || !StartDate || !ExpiryDate || !Amount || !Status) {
+    if (
+      !CouponCode ||
+      !Discount ||
+      !StartDate ||
+      !ExpiryDate ||
+      !Amount ||
+      !Status
+    ) {
       toast.error("Please fill in all fields!");
       return;
     }
 
     try {
-      const response = await fetch(Add_Coupon, {
+      const response = await fetch(COUPONS_API.ADD, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -84,6 +92,7 @@ const AdminCoupons = () => {
       });
 
       const data = await response.json();
+      // console.log("add coupons", data);
       if (response.ok) {
         toast.success(data.message);
         SetCouponCode("");
@@ -95,7 +104,7 @@ const AdminCoupons = () => {
         Get_Coupons_Data_List();
       } else {
         toast.error(data.message);
-        console.log(data.message);
+        // console.log(data.message);
       }
     } catch (error) {
       toast.error("Something went wrong. Please try again!");
@@ -105,29 +114,26 @@ const AdminCoupons = () => {
 
   const formatDate = (dateString) => {
     const date = new Date(dateString);
-    return date.toISOString().split('T')[0];
+    return date.toISOString().split("T")[0];
   };
 
-
-  const [CouponID, SetCouponID] = useState('');
+  const [CouponID, SetCouponID] = useState("");
 
   const DeleteModalBtn = (item) => {
     setShowDeleteModal(true);
     SetCouponID(item.coupon_id);
   };
 
-
   const DeleteBtn = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(Delete_Coupon, {
+      const response = await fetch(COUPONS_API.DELETE, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
           coupon_id: CouponID,
-
         }),
       });
 
@@ -143,14 +149,13 @@ const AdminCoupons = () => {
       toast.error("Something went wrong. Please try again!");
       console.error("Error:", error);
     }
+  };
 
-  }
-
-  const [UpdateItem, SetUpdateItem] = useState(false)
+  const [UpdateItem, SetUpdateItem] = useState(false);
 
   const EditBtn = (item) => {
-    SetUpdateItem(true)
-    console.log(item)
+    SetUpdateItem(true);
+    console.log(item);
     SetCouponID(item.coupon_id);
     SetCouponCode(item.coupon_code);
     SetDiscount(item.discount);
@@ -163,7 +168,7 @@ const AdminCoupons = () => {
   const UpdateBtn = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(Update_Coupon, {
+      const response = await fetch(COUPONS_API.UPDATE, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -184,7 +189,7 @@ const AdminCoupons = () => {
       if (response.ok) {
         toast.success(data.message);
         Get_Coupons_Data_List();
-        SetUpdateItem(false)
+        SetUpdateItem(false);
         SetCouponCode("");
         SetDiscount("");
         SetStartDate("");
@@ -211,8 +216,6 @@ const AdminCoupons = () => {
     SetUpdateItem(false);
   };
 
-
-
   return (
     <Container fluid className="admin-products-container">
       <h2>Coupons</h2>
@@ -224,7 +227,8 @@ const AdminCoupons = () => {
               <Form.Control
                 className="product-input-field"
                 type="text"
-                placeholder="Enter Coupon name" value={CouponCode}
+                placeholder="Enter Coupon name"
+                value={CouponCode}
                 onChange={(e) => SetCouponCode(e.target.value)}
               />
             </Form.Group>
@@ -236,7 +240,8 @@ const AdminCoupons = () => {
               <Form.Control
                 className="product-input-field"
                 type="number"
-                placeholder="Enter Discount %" value={Discount}
+                placeholder="Enter Discount %"
+                value={Discount}
                 onChange={(e) => SetDiscount(e.target.value)}
               />
             </Form.Group>
@@ -248,7 +253,8 @@ const AdminCoupons = () => {
               <Form.Control
                 className="product-input-field"
                 type="text"
-                placeholder="Enter Amount" value={Amount}
+                placeholder="Enter Amount"
+                value={Amount}
                 onChange={(e) => SetAmount(e.target.value)}
               />
             </Form.Group>
@@ -259,7 +265,8 @@ const AdminCoupons = () => {
               <Form.Label className="product-label">Start Date</Form.Label>
               <Form.Control
                 className="product-input-field"
-                type="date" value={StartDate}
+                type="date"
+                value={StartDate}
                 onChange={(e) => SetStartDate(e.target.value)}
               />
             </Form.Group>
@@ -270,18 +277,19 @@ const AdminCoupons = () => {
               <Form.Label className="product-label">End Date</Form.Label>
               <Form.Control
                 className="product-input-field"
-                type="date" value={ExpiryDate}
+                type="date"
+                value={ExpiryDate}
                 onChange={(e) => SetExpiryDate(e.target.value)}
               />
             </Form.Group>
           </Col>
-          
 
           <Col md={4} sm={12}>
             <Form.Group>
               <Form.Label className="product-label">Status</Form.Label>
               <Form.Select
-                className="product-input-field" value={Status}
+                className="product-input-field"
+                value={Status}
                 onChange={(e) => SetStatus(e.target.value)}
               >
                 <option value="">Select Status</option>
@@ -301,18 +309,20 @@ const AdminCoupons = () => {
                 <Button className="add-product-button me-2" onClick={UpdateBtn}>
                   Update
                 </Button>
-                <Button variant="secondary" className="add-product-cancel" onClick={ResetForm}>
+                <Button
+                  variant="secondary"
+                  className="add-product-cancel"
+                  onClick={ResetForm}
+                >
                   Cancel
                 </Button>
               </>
             )}
           </Col>
-
-
         </Row>
       </Form>
 
-      <section style={{ overflow: 'scroll' }}>
+      <section>
         {GetCouponsData.length > 0 && (
           <Table bordered className="mt-4 product-table">
             <thead>
@@ -336,18 +346,23 @@ const AdminCoupons = () => {
                   <td>{item.amount}</td>
                   <td>{formatDate(item.start_date)}</td>
                   <td>{formatDate(item.expairy_date)}</td>
-                  <td>{item.status || 'null '}</td>
+                  <td>{item.status || "null "}</td>
                   <td>
-                    <Button className="admin-product-edit" onClick={() => EditBtn(item)} > Edit </Button>
-                    <Button className="admin-product-delete" onClick={() => DeleteModalBtn(item)} >
-                      Delete
-                    </Button>
+                    <FiEdit
+                      className="admin-coupons-action-icon admin-coupons-edit-icon me-3"
+                      onClick={() => EditBtn(item)}
+                    />
+                    <FaTrashAlt
+                      className="admin-coupons-action-icon admin-coupons-delete-icon"
+                      onClick={() => DeleteModalBtn(item)}
+                    />
                   </td>
                 </tr>
               ))}
             </tbody>
           </Table>
-        )}</section>
+        )}
+      </section>
 
       <Modal
         show={showDeleteModal}
@@ -388,8 +403,6 @@ const AdminCoupons = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-
-
     </Container>
   );
 };

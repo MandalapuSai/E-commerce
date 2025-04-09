@@ -23,8 +23,8 @@ const OurProductsAndOffer = () => {
 
 
   const handleClickCategory = (categoryName) => {
-    // Navigate to the category detail page
-    navigate(`/category/${categoryName}`);
+    const formattedCategory = categoryName.toLowerCase().replace(/\s+/g, "-");
+    navigate(`/category/${formattedCategory}`);
   };
 
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import {
   Container,
   Form,
@@ -9,7 +9,9 @@ import {
   Image,
   Modal,
 } from "react-bootstrap";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaTrashAlt } from "react-icons/fa";
+import { FiEdit } from "react-icons/fi";
+import { MdVisibilityOff, MdVisibility } from "react-icons/md";
 import "./AdminProducts.css";
 
 const AdminProducts = () => {
@@ -17,103 +19,51 @@ const AdminProducts = () => {
   const [stock, setStock] = useState("");
   const [images, setImages] = useState(null);
   const [imagePreview, setImagePreview] = useState("");
-  const [categoryName, setCategoryName] = useState("");
+  const [categoryName, setCategoryName] = useState(""); // Now stores category name
+  const [categoryId, setCategoryId] = useState(""); // Stores category id for form submission
+  const [categories, setCategories] = useState([]); // To store categories fetched from API
   const [variations, setVariations] = useState([{ grams: "", price: "" }]);
-  const [products, setProducts] = useState([
-    {
-      productName: "Apple",
-      stock: "15",
-      images:
-        "http://localhost:3000/static/media/apple.f23b99415222c05e3195.png",
-      categoryName: "Fruits",
-      variations: [
-        { grams: "500 g", price: "200" },
-        { grams: "1 kg", price: "350" },
-      ],
-    },
-    {
-      productName: "Mango",
-      stock: "25",
-      images:
-        "http://localhost:3000/static/media/mango.666e5fd768a8f4c50105.png",
-      categoryName: "Fruits",
-      variations: [
-        { grams: "500 g", price: "250" },
-        { grams: "1 kg", price: "400" },
-      ],
-    },
-    {
-      productName: "Grapes",
-      stock: "20",
-      images:
-        "http://localhost:3000/static/media/grapes.7f839a32c769fce75c33.png",
-      categoryName: "Fruits",
-      variations: [
-        { grams: "500 g", price: "100" },
-        { grams: "1 kg", price: "180" },
-      ],
-    },
-    {
-      productName: "Walnuts",
-      stock: "5",
-      images:
-        "http://localhost:3000/static/media/walnuts.1938165ce27b50d9c728.png",
-      categoryName: "Dry Fruits",
-      variations: [
-        { grams: "500 g", price: "300" },
-        { grams: "1 kg", price: "500" },
-      ],
-    },
-    {
-      productName: "Almonds",
-      stock: "10",
-      images:
-        "http://localhost:3000/static/media/almonds.c58f1b276a9266d6b8d3.png",
-      categoryName: "Dry Fruits",
-      variations: [
-        { grams: "500 g", price: "300" },
-        { grams: "1 kg", price: "500" },
-      ],
-    },
-    {
-      productName: "Turmeric Powder",
-      stock: "30",
-      images:
-        "http://localhost:3000/static/media/turmeric.af31b4c64e858a8e8866.png",
-      categoryName: "Powders",
-      variations: [
-        { grams: "500 g", price: "300" },
-        { grams: "1 kg", price: "500" },
-      ],
-    },
-    {
-      productName: "Coriander Powder",
-      stock: "20",
-      images:
-        "http://localhost:3000/static/media/corianderpowder.7005c04183bfe5b547f8.png",
-      categoryName: "Powders",
-      variations: [
-        { grams: "500 g", price: "300" },
-        { grams: "1 kg", price: "500" },
-      ],
-    },
-  ]);
-
+  const [description, setDescription] = useState("");
+  const [products, setProducts] = useState([]);
   const [editIndex, setEditIndex] = useState(null);
   const [showDeleteModal, setShowDeleteModal] = useState(false);
   const [productToDelete, setProductToDelete] = useState(null);
 
-  const categories = [
-    { id: 1, name: "Fruits" },
-    { id: 2, name: "Dry Fruits" },
-    { id: 3, name: "Powders" },
-  ];
+  const imageInputRef = useRef(null);
+
+  // Fetch categories from the API when the component mounts
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(
+          "http://3.6.40.101:5000/category/getallcategories"
+        );
+        const data = await response.json();
+        if (data.statusCode === 200) {
+          setCategories(data.categories);
+          console.log("Fetched categories:", data);
+        } else {
+          alert("Failed to fetch categories");
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+    fetchCategories();
+  }, []);
+
+  console.log("Categories state:", categories);
 
   // Handle file input and preview
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    setImages(file);
-    setImagePreview(URL.createObjectURL(file)); // Preview image
+    if (file) {
+      // Store the file for upload
+      setImages(file);
+
+      // Create a preview URL for the image
+      setImagePreview(URL.createObjectURL(file));
+    }
   };
 
   const handleVariationChange = (index, field, value) => {
@@ -131,57 +81,150 @@ const AdminProducts = () => {
     setVariations(updatedVariations);
   };
 
-  const handleAddOrEditProduct = () => {
+  const handleAddProduct = async () => {
     if (
       !productName ||
       !stock ||
-      !images ||
-      !categoryName ||
-      !variations.length
+      !categoryId ||
+      !variations.length ||
+      !description.trim() ||
+      !images
     )
-      return;
+      return alert("Please fill all the required fields and select an image.");
 
-    const newProduct = {
-      productName,
-      stock,
-      images: imagePreview,
-      categoryName,
-      variations,
-    };
+    const formData = new FormData();
+    formData.append("product_name", productName);
+    formData.append("stock", stock + "kg");
+    formData.append("description", description);
+    formData.append("category_id", categoryId);
+    if (images) formData.append("product_image", images);
+    formData.append("price_grams", JSON.stringify(variations));
 
-    if (editIndex !== null) {
-      // If we are editing, replace the existing product at editIndex
-      const updatedProducts = [...products];
-      updatedProducts[editIndex] = newProduct;
-      setProducts(updatedProducts);
-      setEditIndex(null); // Reset edit mode
-    } else {
-      // If adding a new product
-      setProducts([...products, newProduct]);
+    try {
+      const response = await fetch(
+        "http://3.6.40.101:5000/products/addproduct",
+        {
+          method: "POST",
+          body: formData,
+        }
+      );
+
+      const data = await response.json();
+
+      console.log("product", data);
+
+      if (data.statusCode === 200) {
+        const addedProduct = {
+          productName: data.product.product_name,
+          stock: data.product.stock,
+          images: `http://3.6.40.101:5000/${data.product.product_image}`,
+          categoryName:
+            categories.find(
+              (cat) => cat.category_id === data.product.category_id
+            )?.category_name || "Unknown Category",
+
+          variations: data.product.price_grams,
+          description: data.product.description,
+        };
+
+        console.log("Found category name:", categoryName);
+
+        setProducts((prev) =>
+          Array.isArray(prev) ? [...prev, addedProduct] : [addedProduct]
+        );
+
+        // Reset form
+        setProductName("");
+        setStock("");
+        setImages(null);
+        setImagePreview("");
+        setCategoryName("");
+        setCategoryId(""); // Reset categoryId
+        setVariations([{ grams: "", price: "" }]);
+        setDescription("");
+
+        if (imageInputRef.current) {
+          imageInputRef.current.value = null;
+        }
+
+        alert("Product added successfully!");
+      } else {
+        alert("Failed to add product");
+      }
+    } catch (error) {
+      console.error("Error adding product:", error);
+      alert("Error adding product");
     }
-
-    // Reset form fields
-    setProductName("");
-    setStock("");
-    setImages(null);
-    setImagePreview("");
-    setCategoryName("");
-    setVariations([{ grams: "", price: "" }]);
   };
 
+  const fetchProducts = async () => {
+    try {
+      const response = await fetch(
+        "http://3.6.40.101:5000/products/getallProduct"
+      );
+      const data = await response.json();
+      if (data.statusCode === 200) {
+        setProducts(data.data);
+      } else {
+        alert("Failed to fetch products");
+      }
+    } catch (error) {
+      console.error("Error fetching products:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchProducts();
+  }, []);
+
   // Handle deleting a product
-  const handleDeleteProduct = () => {
-    const updatedProducts = products.filter(
-      (_, index) => index !== productToDelete
-    );
+  // Handle deleting a product
+  const handleDeleteProduct = async () => {
+    if (productToDelete !== null) {
+      const product = products[productToDelete];
+      try {
+        // Send DELETE request to the API
+        const response = await fetch(
+          "http://3.6.40.101:5000/products/deleteProduct",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ product_id: product.product_id }), // Send product_id to the server
+          }
+        );
+
+        const data = await response.json();
+
+        if (data.statusCode === 200) {
+          // Successfully deleted, now remove the product from state
+          const updatedProducts = products.filter(
+            (_, index) => index !== productToDelete
+          );
+          setProducts(updatedProducts);
+          setShowDeleteModal(false);
+          alert("Product deleted successfully!");
+        } else {
+          alert("Failed to delete product");
+        }
+      } catch (error) {
+        console.error("Error deleting product:", error);
+        alert("Error deleting product");
+      }
+    }
+  };
+
+  const toggleHideProduct = (index) => {
+    const updatedProducts = [...products];
+    updatedProducts[index].hidden = !updatedProducts[index].hidden;
     setProducts(updatedProducts);
-    setShowDeleteModal(false); // Close the modal after deleting
   };
 
   return (
     <Container fluid className="admin-products-container">
-      <h2>Product</h2>
-      <Form className="mt-5">
+      <h2 className="fw-bold">Product</h2>
+      <Form className="mt-4">
         <Row className="gy-1 gx-3">
           <Col md={3}>
             <Form.Group>
@@ -215,7 +258,22 @@ const AdminProducts = () => {
               <Form.Control
                 className="product-input-field"
                 type="file"
+                accept="image/*"
                 onChange={handleImageChange}
+                ref={imageInputRef}
+              />
+            </Form.Group>
+          </Col>
+
+          <Col md={3}>
+            <Form.Group>
+              <Form.Label className="product-label">Description:</Form.Label>
+              <Form.Control
+                className="product-input-field"
+                type="text"
+                placeholder="Enter Product Description"
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
               />
             </Form.Group>
           </Col>
@@ -226,14 +284,28 @@ const AdminProducts = () => {
               <Form.Select
                 className="product-input-field"
                 value={categoryName}
-                onChange={(e) => setCategoryName(e.target.value)}
+                onChange={(e) => {
+                  setCategoryName(e.target.value);
+                  setCategoryId(
+                    categories.find(
+                      (cat) => cat.category_name === e.target.value
+                    )?.category_id
+                  );
+                }}
               >
                 <option value="">Select Category</option>
-                {categories.map((category) => (
-                  <option key={category.id} value={category.name}>
-                    {category.name}
-                  </option>
-                ))}
+                {Array.isArray(categories) && categories.length > 0 ? (
+                  categories.map((category) => (
+                    <option
+                      key={category.category_id}
+                      value={category.category_name}
+                    >
+                      {category.category_name}
+                    </option>
+                  ))
+                ) : (
+                  <option>No categories available</option>
+                )}
               </Form.Select>
             </Form.Group>
           </Col>
@@ -294,7 +366,7 @@ const AdminProducts = () => {
 
           <Col md={3}>
             <Button
-              onClick={handleAddOrEditProduct}
+              onClick={handleAddProduct}
               className="add-product-button"
               disabled={!productName.trim()}
             >
@@ -308,9 +380,10 @@ const AdminProducts = () => {
         <Table bordered className="mt-4 product-table">
           <thead>
             <tr className="product-head">
-              <th>S.No</th>
+              {/* <th>S.No</th> */}
               <th>Product Name</th>
               <th>Stock (Kg)</th>
+              <th>Description</th>
               <th>Category</th>
               <th>Grams & Price</th>
               <th>Image</th>
@@ -319,13 +392,21 @@ const AdminProducts = () => {
           </thead>
           <tbody>
             {products.map((product, index) => (
-              <tr key={index} className="product-row">
-                <td className="p-3">{index + 1}</td>
-                <td>{product.productName}</td>
+              <tr
+                key={index}
+                className={`product-row ${
+                  product.product_status === "hidden" ? "hidden-product" : ""
+                }`}
+              >
+                {/* <td className="p-3">{index + 1}</td> */}
+                <td>{product.product_name}</td>
                 <td>{product.stock}</td>
-                <td>{product.categoryName}</td>
+                <td className="product-description-column">
+                  {product.description}
+                </td>
+                <td>{product.category_name}</td>
                 <td>
-                  {product.variations.map((variation, idx) => (
+                  {product.price_details.map((variation, idx) => (
                     <div key={idx}>
                       {variation.grams} - ₹{variation.price}
                     </div>
@@ -333,33 +414,38 @@ const AdminProducts = () => {
                 </td>
                 <td>
                   <Image
-                    src={product.images}
+                    src={`http://3.6.40.101:5000/${product.product_image}`}
+                    alt={product.product_name}
                     thumbnail
-                    style={{ width: "70px", height: "70px" }}
+                    className="product-table-img"
                   />
                 </td>
-                <td>
-                  <Button
-                    className="admin-product-edit"
+                <td className="pt-3">
+                  <FiEdit
+                    className="admin-product-action-icon admin-product-edit-icon me-3"
+                    title="Edit"
                     onClick={() => {
                       setProductName(product.productName);
                       setStock(product.stock);
                       setCategoryName(product.categoryName);
                       setVariations(product.variations);
                       setImagePreview(product.images);
+                      setDescription(product.description);
                       setEditIndex(index);
                     }}
-                  >
-                    Edit
-                  </Button>{" "}
-                  <Button
-                    className="admin-product-delete"
+                  />
+                  <FaTrashAlt
+                    className="admin-product-action-icon admin-product-delete-icon"
                     onClick={() => {
                       setProductToDelete(index);
                       setShowDeleteModal(true);
                     }}
+                  />
+                  <Button
+                    onClick={() => toggleHideProduct(index)}
+                    className="admin-product-toggle"
                   >
-                    Delete
+                    {product.hidden ? <MdVisibilityOff /> : <MdVisibility />}
                   </Button>
                 </td>
               </tr>
@@ -374,16 +460,23 @@ const AdminProducts = () => {
         onHide={() => setShowDeleteModal(false)}
         centered
       >
-        <Modal.Header closeButton>
-          <Modal.Title>Delete Confirmation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this Product?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>
-            Cancel
-          </Button>
-          <Button variant="danger" onClick={handleDeleteProduct}>
+        <Modal.Body>
+          <h2 className="product-delete-model">
+            Are you sure you want to delete this product ?
+          </h2>
+        </Modal.Body>
+        <Modal.Footer className="product-delete-model-buttons">
+          <Button
+            className="product-yes-delete-model-button"
+            onClick={handleDeleteProduct}
+          >
             Yes, Delete
+          </Button>
+          <Button
+            className="product-cancel-delete-model-button"
+            onClick={() => setShowDeleteModal(false)}
+          >
+            Cancel
           </Button>
         </Modal.Footer>
       </Modal>

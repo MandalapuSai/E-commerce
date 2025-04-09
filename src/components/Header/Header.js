@@ -62,7 +62,8 @@ const Header = () => {
   };
 
   const handleCategoryClick = (categoryName) => {
-    navigate(`/category/${categoryName}`);
+    const formattedCategory = categoryName.toLowerCase().replace(/\s+/g, "-");
+    navigate(`/category/${formattedCategory}`);
   };
 
   const handleShowPopup = (selectedItem) => {
@@ -220,6 +221,7 @@ const Header = () => {
             placeholder="Search products..."
             value={searchQuery}
             onChange={handleSearch}
+            className="search-input-field"
           />
           <button
             className="search-close-btn"

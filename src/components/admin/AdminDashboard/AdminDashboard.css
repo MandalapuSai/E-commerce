@@ -95,6 +95,16 @@
   text-decoration: none;
   padding: 1px 1px;
   transition: color 0.3s;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-menu-link a {
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
 }
 
 .sidebar-menu-link:hover {

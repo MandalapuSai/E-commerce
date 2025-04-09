@@ -15,22 +15,22 @@ const ContactUs = () => {
           <Form>
             <Form.Group controlId="formName">
               <Form.Label className="form-label">Your Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter your name" />
+              <Form.Control type="text" placeholder="Enter your name" className="contact-input-field"/>
             </Form.Group>
 
             <Form.Group controlId="formEmail">
               <Form.Label>Phone Number</Form.Label>
-              <Form.Control type="text" placeholder="Enter your Number" />
+              <Form.Control type="text" placeholder="Enter your Number" className="contact-input-field"/>
             </Form.Group>
 
             <Form.Group controlId="formEmail">
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter your email" />
+              <Form.Control type="email" placeholder="Enter your email" className="contact-input-field"/>
             </Form.Group>
 
             <Form.Group controlId="formMessage">
               <Form.Label>Your Message</Form.Label>
-              <Form.Control as="textarea" rows={3} placeholder="Write your message" />
+              <Form.Control as="textarea" rows={3} placeholder="Write your message" className="contact-input-field"/>
             </Form.Group>
 
             <Button variant="primary" type="submit" className='contactus-btn'>

@@ -42,7 +42,13 @@
   font-weight: 500;
 }
 
-.admin-product-edit {
+.product-table-img {
+  width: 70px;
+  height: 70px;
+  object-fit: cover;
+}
+
+/* .admin-product-edit {
   width: 80px;
   padding: 8px;
   font-size: 15px;
@@ -56,9 +62,9 @@
 .admin-product-edit:hover {
   background-color: #276327 !important;
   box-shadow: none !important;
-}
+} */
 
-.admin-product-delete {
+/* .admin-product-delete {
   width: 80px;
   padding: 8px;
   font-size: 14px;
@@ -73,12 +79,91 @@
 .admin-product-delete:hover {
   background-color: #c41414 !important;
   box-shadow: none !important;
+} */
+
+
+.admin-product-action-icon {
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.admin-product-edit-icon {
+  color: #304d30;
+}
+
+.admin-product-delete-icon {
+  color: #ed1d1d;
+}
+
+.admin-product-action-icon:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
+  transition: all 0.2s ease-in-out;
+}
+
+.admin-product-toggle {
+  background-color: transparent;
+  border: none;
+  color: #276327;
+}
+
+.admin-product-toggle:hover {
+  background-color: transparent !important;
+  color: #276327 !important;
+}
+
+.hidden-product {
+  background-color: #ff0015 !important;
+  color: #721c24 !important;          
+  opacity: 0.6;
+}
+
+.product-delete-model {
+  text-align: center;
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 5px;
+}
+
+.product-delete-model-buttons {
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  border: none;
+}
+
+.product-yes-delete-model-button {
+  background-color: #ed1d1d;
+  border: none;
+}
+
+.product-yes-delete-model-button:hover {
+  background-color: #c41414;
+}
+
+.product-cancel-delete-model-button {
+  background-color: #304d30;
+  border: none;
+}
+
+.product-cancel-delete-model-button:hover {
+  background-color: #276327;
+}
+
+
+.product-description-column {
+  width: 250px;
+  text-align: justify;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .admin-product-delete {
+  /* .admin-product-delete {
     margin-left: 0px;
     margin-top: 10px;
+  } */
+
+  .product-description-column {
+    width: 150px; 
   }
 }

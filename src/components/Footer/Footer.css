@@ -49,6 +49,16 @@
   color: #ffcc00;
 }
 
+
+.footer-links span {
+  cursor: pointer;
+  color: white;
+}
+
+.footer-links span:hover {
+  color: #f4d000;
+}
+
 .footer-contact {
   text-align: start;
 }

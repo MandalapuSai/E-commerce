@@ -27,12 +27,12 @@ const categoriesbanners = {
 
 const CategoryProducts = () => {
   const { categoryName } = useParams();
-  const decodedCategoryName = decodeURIComponent(categoryName); 
+  // const decodedCategoryName = decodeURIComponent(categoryName); 
   const [showPopup, setShowPopup] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const category = categories.find(
-    (cat) => cat.name.toLowerCase() === decodedCategoryName.toLowerCase()
+  const category = categories.find(cat =>
+    cat.name.toLowerCase().replace(/\s+/g, "-") === categoryName
   );
 
   let categoryBanner;

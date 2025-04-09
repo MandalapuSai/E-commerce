@@ -12,7 +12,7 @@ const AdminDashboard = () => {
 
   const handleLogout = () => {
     setShowLogoutModal(false);
-    toast.success("Logged out successfully !!");
+    toast.success("Logged out successfully!!");
     window.location.href = "/admin-signin";
     localStorage.removeItem("User");
   };
@@ -43,25 +43,60 @@ const AdminDashboard = () => {
           {isSidebarOpen && (
             <ul className="sidebar-menu">
               <li>
-                <Link className ="sidebar-menu-link" to="/admin-dashboard/dashboard">Dashboard</Link>
+                <Link
+                  className="sidebar-menu-link"
+                  to="/admin-dashboard/dashboard"
+                >
+                  Dashboard
+                </Link>
               </li>
               <li>
-                <Link className ="sidebar-menu-link" to="/admin-dashboard/categories">Categories</Link>
+                <Link
+                  className="sidebar-menu-link"
+                  to="/admin-dashboard/categories"
+                >
+                  Categories
+                </Link>
               </li>
               <li>
-                <Link className ="sidebar-menu-link" to="/admin-dashboard/products">Products</Link>
+                <Link
+                  className="sidebar-menu-link"
+                  to="/admin-dashboard/products"
+                >
+                  Products
+                </Link>
               </li>
               <li>
-                <Link className ="sidebar-menu-link" to="/admin-dashboard/carousel">Carousel</Link>
+                <Link
+                  className="sidebar-menu-link"
+                  to="/admin-dashboard/carousel"
+                >
+                  Carousel
+                </Link>
               </li>
               <li>
-                <Link className ="sidebar-menu-link" to="/admin-dashboard/coupons">Coupons</Link>
+                <Link
+                  className="sidebar-menu-link"
+                  to="/admin-dashboard/coupons"
+                >
+                  Coupons
+                </Link>
               </li>
               <li>
-                <Link className ="sidebar-menu-link" to="/admin-dashboard/orders">Order Details</Link>
+                <Link
+                  className="sidebar-menu-link"
+                  to="/admin-dashboard/orders"
+                >
+                  Order Details
+                </Link>
               </li>
               <li>
-                <Link className ="sidebar-menu-link" to="/admin-dashboard/profile">Profile</Link>
+                <Link
+                  className="sidebar-menu-link"
+                  to="/admin-dashboard/profile"
+                >
+                  Profile
+                </Link>
               </li>
             </ul>
           )}
